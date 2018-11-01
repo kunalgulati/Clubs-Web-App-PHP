@@ -8,7 +8,16 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+$theme-colors: (
+  "primary": $dark-red,
+  "secondary": $white,
+  "success": $green,
+  "danger": $yellow,
+  "info": $blue
+);
+
+
 .navbar-laravel {
-  background-color: #fff;
+  background-color: $dark-red;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }

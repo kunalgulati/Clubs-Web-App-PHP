@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/bootstrap_palette', function () {
+    return view('bootstrap_palette');
+});
