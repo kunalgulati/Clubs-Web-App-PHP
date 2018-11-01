@@ -5,16 +5,18 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
 $theme-colors: (
-  "primary": $dark-red,
+  "primary": $red,
   "secondary": $white,
   "success": $green,
-  "danger": $yellow,
-  "info": $blue
+  "danger": $blue,
+  "warning": $yellow,
+  "info": $cyan,
+  "dark": $dark-red
+
 );
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 
 .navbar-laravel {
