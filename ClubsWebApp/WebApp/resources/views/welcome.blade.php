@@ -11,7 +11,6 @@
                 <a class="btn btn-primary btn-lg" href="" role="button">Register your club</a>
             </p>
         </div>
-        <a class="btn btn-primary" href="bootstrap_palette" role="button">Bootstrap Pallette </a>
     </div>
 @endsection
 
