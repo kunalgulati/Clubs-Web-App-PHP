@@ -21,3 +21,14 @@ $green: #4ABD00;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $white: #ffffff;
+
+$theme-colors: (
+  "primary": $red,
+  "secondary": $white,
+  "success": $green,
+  "danger": $blue,
+  "warning": $yellow,
+  "info": $cyan,
+  "dark": $dark-red
+
+);
