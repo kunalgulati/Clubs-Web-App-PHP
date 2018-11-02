@@ -8,6 +8,9 @@
             <hr class="my-2">
             <p>Manage your clubs easily!</p>
             <p class="lead">
+                <a class="btn btn-primary btn-lg" href="clubs" role="button">View all clubs</a>
+            </p>
+            <p class="lead">
                 <a class="btn btn-primary btn-lg" href="" role="button">Register your club</a>
             </p>
         </div>
