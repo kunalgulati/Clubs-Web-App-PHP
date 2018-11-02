@@ -1,5 +1,7 @@
 body {
-    padding-top: 90px;
+	padding-top: 90px;
+	font-size: 18px;
+	
 }
 .panel-login {
 	border-color: #ccc;

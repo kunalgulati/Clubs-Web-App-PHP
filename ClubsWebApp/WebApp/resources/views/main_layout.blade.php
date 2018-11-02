@@ -38,7 +38,7 @@
 						@yield('account')
 							
 					@else
-					<a class="btn btn-outline-secondary" href="">
+					<a class="btn btn-outline-secondary" href="login">
 						Log In
 					</a>
 					@endif
