@@ -22,3 +22,7 @@ Route::get('/bootstrap_palette', function () {
 Route::get('/clubs', function () {
     return view('clubs');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
