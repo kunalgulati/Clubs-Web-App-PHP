@@ -15,12 +15,12 @@
 {{ Form::open(array('url' => 'login')) }}
 
 <div class="container" style="top:0px;">
-<h2>For login use email='email@email.com' AND password='password20'</h2>
-<h2>Any other inputs will be rejected</h2>
-<p>
-    {{ $errors->first('email') }}
-    {{ $errors->first('password') }}
-</p>
+	<h2>For login use email='email@email.com' AND password='password20'</h2>
+	<h2>Any other inputs will be rejected</h2>
+	<p>
+    	{{ $errors->first('email') }}
+    	{{ $errors->first('password') }}
+	</p>
 
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
