@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/bootstrap_palette', function () {
     return view('bootstrap_palette');
 });
+
+Route::get('/clubs', function () {
+    return view('clubs');
+});
