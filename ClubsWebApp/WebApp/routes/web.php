@@ -21,3 +21,7 @@ Route::get('/search','SearchController@index');
 Route::get('/clubCreate',function(){
     return view('clubCreate');
 });
+Route::get('/bootstrap_palette', function () {
+    return view('bootstrap_palette');
+});
+

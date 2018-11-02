@@ -5,10 +5,16 @@
 // Variables
 @import 'variables';
 
+@import 'iconic_edits';
+
+// Open Iconic
+@import '~open-iconic/font/css/open-iconic-bootstrap';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
+  background-color: $dark-red;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
