@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/makeDummy','DummyController@makeDummy');
+Route::post('/dummy','DummyController@create');
+Route::get('/search','SearchController@index');
+Route::get('/clubCreate',function(){
+    return view('clubCreate');
+});
