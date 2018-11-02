@@ -23,6 +23,9 @@ Route::get('/clubs', function () {
     return view('clubs');
 });
 
-Route::get('/login', function () {
+//Get the Login Page
+Route::get('login', function () {
     return view('login');
 });
+//Process the Login Form
+Route::post('login', array('uses' => 'LoginController@doLogin'));
