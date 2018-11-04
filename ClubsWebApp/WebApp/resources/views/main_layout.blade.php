@@ -6,7 +6,7 @@
         <script src="{{ URL::asset("js/app.js") }}"></script>
     </head>
     <body> 
-		<nav class="navbar fixed-top navbar-expand-lg bg-primary navbar-dark">
+		<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
 			<a class="navbar-brand" href="/"><span id="home-logo" class="oi oi-home"></span>SFU Sports Clubs</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
