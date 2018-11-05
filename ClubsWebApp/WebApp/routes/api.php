@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-// Routes to Clubs Registeration form
-Route::get('regitser_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
-
-// route to process the form
-Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
