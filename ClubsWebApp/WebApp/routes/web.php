@@ -25,10 +25,13 @@ Route::get('/bootstrap_palette', function () {
     return view('bootstrap_palette');
 });
 
-// Routes to Clubs Registeration form
-Route::get('regitser_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
-// route to process the form
+// Register_Club
+Route::get('register_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
 Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
+
+// Register_Expenses
+Route::get('register_expenses', array('uses' => 'ExpenseRegistrationController@showRegistration'));
+Route::post('register_expenses', array('uses' => 'ExpenseRegistrationController@doRegistration'));
 
 Route::get('/displayclubs','ClubController@display');
 Route::get('/clubs', function () {
