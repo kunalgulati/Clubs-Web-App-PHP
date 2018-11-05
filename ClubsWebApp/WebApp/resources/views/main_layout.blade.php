@@ -6,7 +6,7 @@
         <script src="{{ URL::asset("js/app.js") }}"></script>
     </head>
     <body> 
-		<nav class="navbar fixed-top navbar-expand-lg bg-primary navbar-dark">
+		<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
 			<a class="navbar-brand" href="/"><span id="home-logo" class="oi oi-home"></span>SFU Sports Clubs</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
 			<div class="collapse navbar-collapse justify-content-between" id="top-navbar">
 				<ul class="navbar-nav">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Clubs <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/clubs">Clubs <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Manage</a>
@@ -38,7 +38,7 @@
 						@yield('account')
 							
 					@else
-					<a class="btn btn-outline-secondary" href="">
+					<a class="btn btn-outline-secondary" href="login">
 						Log In
 					</a>
 					@endif

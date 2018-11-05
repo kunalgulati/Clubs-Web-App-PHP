@@ -24,6 +24,7 @@ class DummyController extends Controller
             $club = new Club();
             $club->information = "hello".$i;
             $club->club_name = "club".$i;
+            $club->president_id ="president".$i;
             $club->save();
 
             $user = new User();

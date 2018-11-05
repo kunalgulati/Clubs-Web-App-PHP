@@ -25,3 +25,14 @@ Route::get('/bootstrap_palette', function () {
     return view('bootstrap_palette');
 });
 
+Route::get('/displayclubs','ClubController@display');
+Route::get('/clubs', function () {
+    return view('clubs');
+});
+
+//Get the Login Page
+Route::get('login', function () {
+    return view('login');
+});
+//Process the Login Form
+Route::post('login', array('uses' => 'LoginController@doLogin'));
