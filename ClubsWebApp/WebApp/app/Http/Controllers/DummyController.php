@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Club;
 use App\Club_user;
-use App\User;
+use App\Member;
 
 class DummyController extends Controller
 {
@@ -27,11 +27,11 @@ class DummyController extends Controller
             $club->president_id ="president".$i;
             $club->save();
 
-            $user = new User();
-            $user->email = $i."@sfu.ca";
-            $user->password = $i."1111aaaa";
-            $user->name = $i."whatever";
-            $user->save();
+            $member = new Member();
+            $member->email = $i."@sfu.ca";
+            $member->student_id = $i;
+            $member->name = $i."whatever";
+            $member->save();
         }
 
         return redirect('/');
