@@ -1,0 +1,27 @@
+@extends('main_layout')
+@section('content')
+<!DOCTYPE>
+
+<div style='padding-top: 50px;'>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">StudentId</th>
+            <th scope="col">Name</th>
+            <th scope="col">email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($members as $member)
+        <tr>
+            <th scope="row">{{$user['id']}}</th>
+            <td>{{$member['student_id']}}</td>
+            <td>{{$member['name']}}</td>
+            <td>{{$member['email']}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
+</div>
+@endsection

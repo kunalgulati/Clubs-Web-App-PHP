@@ -25,7 +25,8 @@ Route::get('/bootstrap_palette', function () {
     return view('bootstrap_palette');
 });
 
-Route::get('/displayclubs','ClubController@display');
+Route::get('/displayclubs','DisplayController@displayClub');
+Route::get('/displaymembers','DisplayController@displayMember');
 Route::get('/clubs', function () {
     return view('clubs');
 });
