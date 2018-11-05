@@ -1,19 +1,35 @@
+@extends('main_layout')
+@section('content')
 <!DOCTYPE>
-<html>
-<head>
-    <title>Displaying Clubs</title>
-</head>
-<body>
-Club List
 
-@foreach($clubs as $club)
-    <p>
-        <p>{{$club['club_name']}} {{$club['information']}} {{$club['president_id']}}</p>
-        <form method= "post" action="/clubpage/{{$club->id}}">
+<div style='padding-top: 50px;'>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Administer ID</th>
+            <th scope="col">Description</th>
+            <th scope="col">Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($clubs as $club)
+        <tr>
+            <th scope="row">{{$club['id']}}</th>
+            <td>{{$club['club_name']}}</td>
+            <td>{{$club['president_id']}}</td>
+            <td>{{$club['information']}}</td>
+            <td>
+            <form method= "post" action="/clubpage/{{$club->id}}">
             <input type="hidden" name="_token" value="{{ csrf_token()}}">
             <input type = "submit" value = "See details">
-        </form>
-    </p>
-@endforeach
-</body>
-</html>
+            </form>
+            <td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
+</div>
+@endsection
