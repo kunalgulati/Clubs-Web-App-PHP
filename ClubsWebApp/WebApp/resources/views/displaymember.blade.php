@@ -6,6 +6,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th scope="col">id</th>
             <th scope="col">StudentId</th>
             <th scope="col">Name</th>
             <th scope="col">email</th>
@@ -14,7 +15,7 @@
     <tbody>
         @foreach($members as $member)
         <tr>
-            <th scope="row">{{$user['id']}}</th>
+            <th scope="row">{{$member['id']}}</th>
             <td>{{$member['student_id']}}</td>
             <td>{{$member['name']}}</td>
             <td>{{$member['email']}}</td>

@@ -5,7 +5,7 @@ use App\Club;
 use App\Member;
 use Illuminate\Http\Request;
 
-class ClubController extends Controller
+class DisplayController extends Controller
 {
     public function displayClub(){
         
