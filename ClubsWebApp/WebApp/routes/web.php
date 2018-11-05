@@ -27,9 +27,9 @@ Route::get('/bootstrap_palette', function () {
 
 // Routes to Clubs Registeration form
 Route::get('regitser_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
-
 // route to process the form
 Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
+
 Route::get('/displayclubs','ClubController@display');
 Route::get('/clubs', function () {
     return view('clubs');

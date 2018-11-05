@@ -17,22 +17,22 @@
                         {{ $errors->first('password') }}
                     </p>
                     <div class="info-form">
-                        <form class='col-6'>
+                        <form class='col-6' action="" method="post" role="form">
                             <div class="form-group">
                                 <!-- <label for="exampleInputEmail1">Email address</label> -->
                                 {{ Form::label('text', 'Club Name') }}
-                                {{ Form::text('text', Input::old('text'), array('id' => 'usr', 'class' => "form-control", 'placeholder' => 'SFU Ice Hockey Club')) }}
+                                {{ Form::text('text', Input::old('text'), array('name'=>'club_name','id' => 'clubName', 'class' => "form-control", 'placeholder' => 'SFU Ice Hockey Club')) }}
                                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'Club Description') }}
-                                {{ Form::text('textarea', Input::old('textarea'), array('class' => "form-control", 'rows'=>'5' ,'id' => 'exampleTextarea',  'placeholder' => 'Description')) }}    
+                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'description', 'class' => "form-control", 'rows'=>'5' ,'id' => 'clubDescription',  'placeholder' => 'Description')) }}    
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'President Student Number') }}
-                                {{ Form::number('number', Input::old('number'), array('class' => "form-control" ,'id' => 'number-input',  'placeholder' => 'Student Number')) }}    
+                                {{ Form::number('number', Input::old('number'), array('name'=>'student_id', 'class' => "form-control" ,'id' => 'studentNumber',  'placeholder' => 'Student Number')) }}    
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <input type="submit" class="btn btn-primary">Submit
                         </form>
                     </div>
                 </div>
