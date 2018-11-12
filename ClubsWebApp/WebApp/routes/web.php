@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/search','SearchController@index');
+Route::get('/clubCreate',function(){
+    return view('clubCreate');
+});
 Route::get('/bootstrap_palette', function () {
     return view('bootstrap_palette');
 });
 
+Route::get('/displayclubs','DisplayController@displayClub');
+Route::get('/displaymembers','DisplayController@displayMember');
 Route::get('/clubs', function () {
     return view('clubs');
 });
