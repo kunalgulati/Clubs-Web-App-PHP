@@ -2,7 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
 		<link rel="stylesheet" href="{{ URL::asset("css/layout.css") }}">
-        <link rel="stylesheet" href="{{ URL::asset("css/app.css") }}">
+		<link rel="stylesheet" href="{{ URL::asset("css/app.css") }}">
+		<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
         <script src="{{ URL::asset("js/app.js") }}"></script>
     </head>
     <body> 

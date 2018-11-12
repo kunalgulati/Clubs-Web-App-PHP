@@ -1,9 +1,6 @@
 @extends('main_layout')
 
 @section('content')
-<head>
-	<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
-</head>
 {{ Form::open(array('url' => 'register_club')) }}
 <section id="cover">
     <div id="cover-caption">
