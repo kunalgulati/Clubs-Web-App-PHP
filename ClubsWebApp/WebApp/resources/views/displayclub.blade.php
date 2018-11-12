@@ -1,8 +1,7 @@
 @extends('main_layout')
 @section('content')
 <!DOCTYPE>
-
-<div style='padding-top: 50px;'>
+<div class = "table_display">
 <table class="table">
     <thead>
         <tr>
