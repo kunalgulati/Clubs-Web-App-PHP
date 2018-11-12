@@ -19,14 +19,14 @@ class ClubsRegistrationController extends Controller
 
     public function doRegistration(Request $request)
     {
-        $name = $request->input('club_name');
-        $student_number = $request->input('student_id');
-        $description = $request->input('description');
+        $club_name = $request->input('club_name');
+        //$student_number = $request->input('student_id');
+        $information = $request->input('information');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
             'club_name' => 'required',
-            'student_id' => 'required|numeric',
+            //'student_id' => 'required|numeric',
         ]);
         if ($validator->fails()) {
             return Redirect::to('regitser_club')
@@ -34,8 +34,8 @@ class ClubsRegistrationController extends Controller
                 ->withInput(); // send back the input (not the password) so that we can repopulate the form
         }
         else{
-            $data=array('name'=>$name,"member_student_id"=>$student_number,"description"=>$description);
-            if(DB::table('club_registration')->insert($data)){
+            $data=array('club_name'=>$club_name,"information"=>$information);
+            if(DB::table('clubs')->insert($data)){
                 return Redirect::to('/');
             }
             else{

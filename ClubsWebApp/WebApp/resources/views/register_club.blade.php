@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'Club Description') }}
-                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'description', 'class' => "form-control", 'rows'=>'5' ,'id' => 'clubDescription',  'placeholder' => 'Description')) }}    
+                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'information', 'class' => "form-control", 'rows'=>'5' ,'id' => 'clubDescription',  'placeholder' => 'Description')) }}    
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'President Student Number') }}
