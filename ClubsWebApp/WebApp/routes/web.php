@@ -41,5 +41,5 @@ Route::get('register_club', array('uses' => 'ClubsRegistrationController@showReg
 Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
 
 // Register_Expenses
-Route::get('register_expenses', array('uses' => 'ExpenseRegistrationController@showRegistration'));
-Route::post('register_expenses', array('uses' => 'ExpenseRegistrationController@doRegistration'));
+Route::get('register_expenses', array('uses' => 'ClubsExpensesController@showRegistration'));
+Route::post('register_expenses', array('uses' => 'ClubsExpensesController@doRegistration'));
