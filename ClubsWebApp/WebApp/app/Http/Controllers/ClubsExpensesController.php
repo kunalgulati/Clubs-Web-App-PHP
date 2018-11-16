@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use App\Expense;
+
 
 class ClubsExpensesController extends Controller
 {
@@ -15,6 +17,9 @@ class ClubsExpensesController extends Controller
         return view('register_expenses');
     }
 
+    //POST an expense
+    //Validate all inpiuts 
+    //Find the club_id
     public function doRegistration(Request $request)
     {
         $expenseName = $request->input('expense_name');
@@ -43,7 +48,7 @@ class ClubsExpensesController extends Controller
                 "amount"=>$amount,
                 'club_id'=>$club_id[0]
             );
-            if(DB::table('expense')->insert($data)){
+            if(DB::table('expenses')->insert($data)){
                 return Redirect::to('/');
             }
             else{
@@ -51,5 +56,12 @@ class ClubsExpensesController extends Controller
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }
+    }
+
+    //Display the expenses
+    public function showExpenses(){
+
+        $expenses = Expense::all();
+        return view('display_expenses',compact('expenses'));
     }
 }
