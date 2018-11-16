@@ -71,7 +71,7 @@ class ClubsEventsController extends Controller
     //TODO
     public function showAllEvents(){
 
-        $expenses = Expense::all();
-        return view('display_expenses',compact('expenses'));
+        $events = Event::all();
+        return view('display_events', compact('events'));
     }
 }
