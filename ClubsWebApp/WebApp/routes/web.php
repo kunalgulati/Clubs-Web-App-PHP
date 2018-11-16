@@ -46,3 +46,9 @@ Route::post('register_event', array('uses' => 'ClubsEventsController@doRegistrat
 
 //Show All Events 
 Route::get('display_events', array('uses' => 'ClubsEventsController@showAllEvents'));
+
+//Edit Events
+Route::get('edit_events', array('uses' => 'ClubsEventsController@showAllEditableEvents'));
+
+//Delete Events
+Route::get('delete_event/{id}', array('uses' => 'ClubsEventsController@deleteEvent'));

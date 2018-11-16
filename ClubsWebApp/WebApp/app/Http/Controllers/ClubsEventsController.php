@@ -70,8 +70,22 @@ class ClubsEventsController extends Controller
     //Display the expenses
     //TODO
     public function showAllEvents(){
-
         $events = Event::all();
         return view('display_events', compact('events'));
     }
+
+    //show the list of Editable Events
+    public function showAllEditableEvents(){
+        $events = Event::all();
+        return view('edit_events', compact('events'));
+    }
+
+    //Delete an Event
+    public function deleteEvent($id){
+        Event::where('id', $id)->delete();
+        $events = Event::all();
+        return view('edit_events', compact('events'));
+    }
+
+
 }
