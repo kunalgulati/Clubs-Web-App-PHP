@@ -1,6 +1,10 @@
 @extends('main_layout')
 @section('content')
+
 <!DOCTYPE>
+<body>
+    <!-- <script src="{{ URL::asset("js/display_expenses.js") }}"></script> -->
+</body>
 
 <table class="table">
     <thead class="thead-dark">
@@ -31,6 +35,8 @@
         </tr> -->
     </tbody>
 </table>
-
-
 @endsection
+
+<script>
+
+</script>
