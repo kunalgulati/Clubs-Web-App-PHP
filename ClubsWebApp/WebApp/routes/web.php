@@ -39,3 +39,10 @@ Route::post('login', array('uses' => 'LoginController@doLogin'));
 // Register_Club
 Route::get('register_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
 Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
+
+// Register An Event
+Route::get('register_event', array('uses' => 'ClubsEventsController@showRegistration'));
+Route::post('register_event', array('uses' => 'ClubsEventsController@doRegistration'));
+
+//Show All Events 
+Route::get('display_events', array('uses' => 'ClubsEventsController@showAllEvents'));
