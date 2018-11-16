@@ -16,7 +16,7 @@ class CreateExpenseTable extends Migration
         Schema::create('expense', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('expense_name')->unique();
+            $table->string('expense_name');
             $table->float('amount');
             $table->string('description');
             $table->unsignedInteger('club_id');
