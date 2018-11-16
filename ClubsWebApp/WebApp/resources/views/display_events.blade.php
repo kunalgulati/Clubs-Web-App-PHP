@@ -13,12 +13,12 @@
                         <div class="row">
                             <!-- Image -->
                             <div class="col-sm-3">
-                                <img src="http://via.placeholder.com/200x200" alt="" class="rounded-circle img-fluid" />
+                                <img src="https://img.icons8.com/color/96/000000/university.png" alt="" class="rounded-circle img-fluid" />
                             </div>
                             <div class="col-sm-9">
-                                <h3> <label>Event Name: </label> {{$event['event_name']}}</h3> 
-                                <p><label>Description: </label> {{$event['description']}}</p>
-                                <p> <strong>Address: </strong> {{$event['room']}}, {{$event['address']}}, {{$event['city']}}</p>
+                                <h3><b><label>Event Name: </label> {{$event['event_name']}}</h3> 
+                                <p><b><label>Description: </label></b> {{$event['description']}}</p>
+                                <p> <b><strong>Address: </strong></b> {{$event['room']}}, {{$event['address']}}, {{$event['city']}}</p>
                                 <p><label>Date: </label>TODO</p>
                                 <a href="#" class="btn bg-success eventButton">Go somewhere</a>
 
