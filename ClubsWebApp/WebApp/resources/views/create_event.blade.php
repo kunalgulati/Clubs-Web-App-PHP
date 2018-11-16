@@ -4,7 +4,7 @@
 <head>
 	<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
 </head>
-{{ Form::open(array('url' => 'register_expenses')) }}
+{{ Form::open(array('url' => 'register_event')) }}
 <section id="cover">
     <div id="cover-caption">
         <div id="container" class="container">
@@ -32,11 +32,11 @@
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'Room/Building') }}
-                                {{ Form::number('number', Input::old('textarea'), array('name'=>'room', 'class' => "form-control" ,'id' => 'room',  'placeholder' => 'Room 2204, West Mall Center')) }}    
+                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'room', 'class' => "form-control" ,'id' => 'room',  'placeholder' => 'Room 2204, West Mall Center')) }}    
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'Address') }}
-                                {{ Form::number('number', Input::old('textarea'), array('name'=>'address', 'class' => "form-control" ,'id' => 'address',  'placeholder' => '8888 University drive')) }}    
+                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'address', 'class' => "form-control" ,'id' => 'address',  'placeholder' => '8888 University drive')) }}    
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'City') }}
