@@ -52,7 +52,7 @@ class ClubsExpensesController extends Controller
                 return Redirect::to('/');
             }
             else{
-                return Redirect::to('register_expense')
+                return Redirect::to('display_expenses')
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }

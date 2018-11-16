@@ -17,7 +17,7 @@
                 <th scope="row">{{$expense['id']}}</th>
                 <td>{{$expense['expense_name']}}</td>
                 <td>{{$expense['description']}}</td>
-                <td>{{$expense['amount']}}</td>
+                <td>${{$expense['amount']}}</td>
             </tr>
         @endforeach
 
