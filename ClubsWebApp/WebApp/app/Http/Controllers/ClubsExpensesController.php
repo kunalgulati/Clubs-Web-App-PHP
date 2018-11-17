@@ -60,8 +60,20 @@ class ClubsExpensesController extends Controller
 
     //Display the expenses
     public function showExpenses(){
-
         $expenses = Expense::all();
         return view('display_expenses',compact('expenses'));
+    }
+
+    //Delete the Expense
+    public function deleteExpense($id){
+        Expense::where('id', $id)->delete();
+        $expenses = Expense::all();
+        return view('display_expenses', compact('expenses'));
+    }
+
+    //Edit an Expense
+    public function editExpense($id){
+        $expense = Expense::where('id', $id)->get();
+        return view('edit_expense', compact('expense'));
     }
 }
