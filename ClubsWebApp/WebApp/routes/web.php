@@ -35,3 +35,7 @@ Route::get('login', function () {
 });
 //Process the Login Form
 Route::post('login', array('uses' => 'LoginController@doLogin'));
+
+// Register_Club
+Route::get('register_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
+Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
