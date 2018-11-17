@@ -46,3 +46,7 @@ Route::post('register_expenses', array('uses' => 'ClubsExpensesController@doRegi
 //Display Register Expenses
 Route::get('display_expenses', array('uses' => 'ClubsExpensesController@showExpenses'));
 
+//Display Club Dashboard
+Route::get('display_dashboard', array('uses' => 'ClubsExpensesController@showExpenses'));
+
+
