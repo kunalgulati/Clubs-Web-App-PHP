@@ -13,6 +13,8 @@
             <th scope="col">Expense Name</th>
             <th scope="col">Description</th>
             <th scope="col">Amount</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -22,21 +24,21 @@
                 <td>{{$expense['expense_name']}}</td>
                 <td>{{$expense['description']}}</td>
                 <td>${{$expense['amount']}}</td>
+                <td><a href="" class="btn bg-success eventButton">Edit</a></td>
+                <td><a href="delete_expense/{{ $expense->id }}" class="btn bg-primary eventButton">Delete</a></td>
             </tr>
         @endforeach
 
-
-
-        <!-- <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr> -->
     </tbody>
 </table>
 @endsection
 
-<script>
+<style>
+.eventButton{
+    color: white;
+}
 
-</script>
+.eventButton:hover{
+    color: white;
+}
+</style>
