@@ -19,7 +19,7 @@
                                 <h3><b><label>Event Name: </label> {{$event['event_name']}}</h3> 
                                 <p><b><label>Description: </label></b> {{$event['description']}}</p>
                                 <p> <b><strong>Address: </strong></b> {{$event['room']}}, {{$event['address']}}, {{$event['city']}}</p>
-                                <p><label>Date: </label>TODO</p>
+                                <p><label>Date: </label>{{$event['event_date']}}</p>
                                 <a href="#" class="btn bg-success eventButton">Go somewhere</a>
 
                             </div>

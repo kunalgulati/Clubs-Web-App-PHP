@@ -4,6 +4,7 @@
 <head>
 	<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
 </head>
+
 {{ Form::open(array('url' => 'register_event')) }}
 <section id="cover">
     <div id="cover-caption">
@@ -46,8 +47,15 @@
                                 {{ Form::label('text', 'Club Name') }}
                                 {{ Form::text('textarea', Input::old('textarea'), array('name'=>'club_name', 'class' => "form-control" ,'id' => 'club_name',  'placeholder' => 'SFU Icehockey Club')) }}    
                             </div>
+                            <div class="form-group">
+                            {{ Form::label('text', 'Date') }}
+                            <br/>
+                            <input type='datetime-local' class="form-control" id='event_date' name ="event_date" />  
+                            
+                            </div>
                             <input type="submit" class="btn btn-primary">
                         </form>
+ 
                     </div>
                 </div>
             </div>

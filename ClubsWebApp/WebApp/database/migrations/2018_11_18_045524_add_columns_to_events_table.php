@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClubRegister extends Migration
+class AddColumnsToEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateClubRegister extends Migration
      */
     public function up()
     {
-        Schema::create('clubs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->string('club_name')->unique();        
-            $table->string('information');
+        Schema::table('events', function (Blueprint $table) {
+            $table->datetime('event_date');
         });
     }
 
@@ -28,8 +25,8 @@ class CreateClubRegister extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('clubs');
-
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('event_date');
+        });
     }
 }

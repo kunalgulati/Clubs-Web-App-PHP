@@ -4,7 +4,8 @@
 		<link rel="stylesheet" href="{{ URL::asset("css/layout.css") }}">
 		<link rel="stylesheet" href="{{ URL::asset("css/app.css") }}">
 		<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
-        <script src="{{ URL::asset("js/app.js") }}"></script>
+		<script src="{{ URL::asset("js/app.js") }}"></script>
+
     </head>
     <body> 
 		<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
