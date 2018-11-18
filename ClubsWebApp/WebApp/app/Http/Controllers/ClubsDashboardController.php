@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-use App\Expense;
+use App\Dashboard_post;
 
 
 class ClubsDashboardController extends Controller
 {
     public function showDashboard()
     {
-        // show the form
-        return view('display_dashboard');
+        $posts = Dashboard_post::all();
+        return view('display_dashboard',compact('posts'));
     }
 
     //SHOW Registeration Form
@@ -72,7 +72,7 @@ class ClubsDashboardController extends Controller
                 'club_admin_id'=>1,
                 'club_id'=>$club_id[0]
             );
-            if(DB::table('dashboard_post')->insert($data)){
+            if(DB::table('dashboard_posts')->insert($data)){
                 return Redirect::to('/');
             }
             else{
@@ -81,4 +81,5 @@ class ClubsDashboardController extends Controller
             }    
         }
     }
+    
 }
