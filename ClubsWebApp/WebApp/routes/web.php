@@ -45,6 +45,8 @@ Route::get('register_expenses', array('uses' => 'ClubsExpensesController@showReg
 Route::post('register_expenses', array('uses' => 'ClubsExpensesController@doRegistration'));
 //Display Register Expenses
 Route::get('display_expenses', array('uses' => 'ClubsExpensesController@showExpenses'));
+//Update Expense
+Route::get('update_expense/{id}{name}','ClubsExpensesController@updateExpense');
 //Delete Expense
 Route::get('delete_expense/{id}', array('uses' => 'ClubsExpensesController@deleteExpense'));
 //Delete Expense

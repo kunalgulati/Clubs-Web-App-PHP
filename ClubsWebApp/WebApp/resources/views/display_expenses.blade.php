@@ -24,9 +24,11 @@
                 <td>{{$expense['expense_name']}}</td>
                 <td>{{$expense['description']}}</td>
                 <td>${{$expense['amount']}}</td>
-                <td><a href="" class="btn bg-success eventButton">Edit</a></td>
+                <td><a href="update_expense?{{$expense->id, $expense->expense_name}}"
+                     class="btn bg-success eventButton">Edit</a></td> -->
                 <td><a href="delete_expense/{{ $expense->id }}" class="btn bg-primary eventButton">Delete</a></td>
             </tr>
+            
         @endforeach
 
     </tbody>
