@@ -1,3 +1,8 @@
+<head> 
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 @extends('main_layout')
 
 @section('content')
@@ -11,53 +16,31 @@
           <h1 class="my-4">Page Heading
             <small>Secondary Text</small>
           </h1>
-
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
-            <!-- If Ifram -->
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe  src="https://www.youtube.com/embed/tgbNymZ7vqY" allow="encrypted-media" allowfullscreen></iframe>
+          @foreach($posts as $post)
+            <div class="card mb-4">
+              @if($post['type'] =='y')
+                
+                <div class="embed-responsive embed-responsive-16by9">
+                {{$temp=preg_replace("/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+		                      "//www.youtube.com/embed/$2",
+                          $post['url'])}}
+                    <iframe  src="{!! $temp !!}" allow="encrypted-media" allowfullscreen></iframe>
+                </div>
+                @else
+                  <img class="img-fluid" alt="Responsive image" src="{{$post['url']}}">
+              @endif
+              <div class="card-body">
+                <h2 class="card-title">{{$post['title']}}</h2>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                <a href="#" class="btn btn-success" style='color: white;'>Read More &rarr;</a>
+              </div>
+              <div class="card-footer text-muted">
+                Posted on January 1, 2017 by
+                <b style='color:black;'>userX</b>
+              </div>
             </div>
-
-
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-success" style='color: white;'>Read More &rarr;</a>
+          @endforeach
             </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <b style='color:black;'>userX</b>
-            </div>
-          </div>
-
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <!-- If an image -->
-            <img class="img-fluid" alt="Responsive image" src="https://drive.google.com/uc?export=view&id=0B6wwyazyzml-OGQ3VUo0Z2thdmc">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-success" style='color: white;'>Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <b style='color:black;'>userX</b>
-            </div>
-          </div>
-
-          <!-- Pagination -->
-          <ul class="pagination justify-content-center mb-4">
-            <li class="page-item">
-              <a class="page-link" href="#">&larr; Older</a>
-            </li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Newer &rarr;</a>
-            </li>
-          </ul>
-
-        </div>
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
