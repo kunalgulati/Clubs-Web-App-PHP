@@ -23,9 +23,15 @@
                 <th scope="row">{{$expense['id']}}</th>
                 <td>{{$expense['expense_name']}}</td>
                 <td>{{$expense['description']}}</td>
-                <td>${{$expense['amount']}}</td>
-                <td><a href="update_expense?{{$expense->id, $expense->expense_name}}"
-                     class="btn bg-success eventButton">Edit</a></td> -->
+                <td>{{$expense['amount']}}</td>
+                <td><form action="update_expense" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" id="id" name="id" value="{{$expense['id']}}">    
+                <input type="hidden" id="name" name="name" value="{{$expense['expense_name']}}">
+                <input type="hidden" id="description" name="description" value="{{$expense['description']}}">
+                <input type="hidden" id="amount" name="amount" value="{{$expense['amount']}}">
+                <button type = "submit" class="btn bg-success eventButton">Edit</button></td>
+                </form>
                 <td><a href="delete_expense/{{ $expense->id }}" class="btn bg-primary eventButton">Delete</a></td>
             </tr>
             

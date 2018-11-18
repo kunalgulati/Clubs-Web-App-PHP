@@ -71,6 +71,31 @@ class ClubsExpensesController extends Controller
         return view('display_expenses', compact('expenses'));
     }
 
+    //Update the Expense
+    public function updateExpense(Request $request){
+        $name = $request->input('expense_name');
+        $id = $request->input('id');
+        $amount = $request->input('amount');
+        $description = $request->input('description');
+        $expense = Expense::find($id);
+        $expense->expense_name = $name;
+        $expense->amount = $amount;
+        $expense->description = $description;
+        $expense->save();
+        $expenses = Expense::all();
+        return view('display_expenses', compact('expenses'));
+
+    }
+
+    //Redirect to register expenses with values of name id amount and description
+    public function showExpenseToUpdate(Request $request){
+        $name = $request->input('name');
+        $id = $request->input('id');
+        $amount = $request->input('amount');
+        $description = $request->input('description');   
+        return view('register_expenses',compact('name','id','amount','description'));
+    }
+
     //Edit an Expense
     public function editExpense($id){
         $expense = Expense::where('id', $id)->get();
