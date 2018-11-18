@@ -17,7 +17,7 @@ class CreateDashboardPostTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('type');
-            $table->string('varchar(65535)');
+            $table->text('url');
             $table->unsignedInteger('club_id');
             $table->foreign('club_id')->references('id')->on('clubs');
             $table->unsignedInteger('club_admin_id');

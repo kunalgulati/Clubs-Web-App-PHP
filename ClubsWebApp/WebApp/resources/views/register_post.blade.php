@@ -4,7 +4,7 @@
 <head>
 	<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
 </head>
-{{ Form::open(array('url' => 'register_expenses')) }}
+{{ Form::open(array('url' => 'register_post')) }}
 <section id="cover">
     <div id="cover-caption">
         <div id="container" class="container">
@@ -29,11 +29,7 @@
                                 <div class="input-group-prepend">
                                     {{ Form::label('text', 'Source Type', array( 'class'=>'input-group-text', 'for' => 'inputGroupSelect01'  )) }}
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Youtube</option>
-                                    <option value="2">Image</option>
-                                </select>
+                                {{ Form::select('type', ['y' => 'youtube', 'i' => 'Image'], null, ['id'=>'type', 'class'=>'form-control', 'placeholder' => 'Pick a size...'])}}
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
