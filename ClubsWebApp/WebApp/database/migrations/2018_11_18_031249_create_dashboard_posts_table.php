@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDashboardPostTable extends Migration
+class CreateDashboardPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDashboardPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('dashboard_post', function (Blueprint $table) {
+        Schema::create('dashboard_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('type');
@@ -32,6 +32,6 @@ class CreateDashboardPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dashboard_post');
+        Schema::dropIfExists('dashboard_posts');
     }
 }
