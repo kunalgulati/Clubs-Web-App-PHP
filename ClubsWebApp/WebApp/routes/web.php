@@ -11,11 +11,11 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search','SearchController@index');
 Route::get('/clubCreate',function(){
     return view('clubCreate');
 });
@@ -25,6 +25,7 @@ Route::get('/bootstrap_palette', function () {
 
 Route::get('/displayclubs','DisplayController@displayClub');
 Route::get('/displaymembers','DisplayController@displayMember');
+Route::post('/search','SearchController@index');
 Route::get('/clubs', function () {
     return view('clubs');
 });

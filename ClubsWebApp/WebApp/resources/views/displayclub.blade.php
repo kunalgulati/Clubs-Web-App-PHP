@@ -1,8 +1,8 @@
 @extends('main_layout')
 @section('content')
-<!DOCTYPE>
-<div class = "table_display">
-<table class="table">
+
+@if($clubs!='')
+<!-- <table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -28,7 +28,38 @@
         </tr>
         @endforeach
     </tbody>
-</table>
+</table> -->
+            @foreach($clubs as $club)
+                    <div class="club-item post-item">
+						<div class="clearfix">
+							<!-- <div class="col-sm-4">
+								<img class="img-responsive" src="" alt="">
+							</div> -->
+							<div class="col-sm-8">
+								<h2 class="club-title">{{$club['club_name']}}</h2>
+								<div class="post-content">
+									<p>{{$club['information']}}</p>
+								</div>
+								<div class="club-details">
+																												<div>
+											<span><em>Administer ID: </em></span>{{$club['president_id']}}</div>
+																												<div>
+											<span><em>Website: </em></span><a href="http://">http://</a>
+										</div>
+																	</div>
+								<div class="club-join">
+									<a href="#" class="btn alt">Join Club</a>
+								</div>
+							</div>
+						</div>
+					</div>
+                @endforeach
+
+@else
+<div>
+<p>result not found</p>
 </div>
+@endif
+
 </div>
 @endsection

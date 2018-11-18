@@ -4,6 +4,8 @@
 		<link rel="stylesheet" href="{{ URL::asset("css/layout.css") }}">
 		<link rel="stylesheet" href="{{ URL::asset("css/app.css") }}">
 		<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
+		<link rel="stylesheet" href="{{ URL::asset("css/club_item.css") }}">
+	
         <script src="{{ URL::asset("js/app.js") }}"></script>
     </head>
     <body> 
@@ -29,9 +31,10 @@
 						</div>
 					</li>
 				</ul>
-				<form class="form-inline ">
+				<form class="form-inline " method="post" action = "/search">
+				    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<span class="oi oi-magnifying-glass-lg my-2 my-sm-0"></span>
-					<input class="form-control" type="search" placeholder="Find a club..." aria-label="Search">
+					<input class="form-control" type="search" placeholder="Find a club..." aria-label="Search" name="club_name">
 					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
 				</form>
 				<div class="nav-item bg-primary">
