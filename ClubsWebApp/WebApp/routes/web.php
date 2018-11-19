@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/blackboard', function () {
+    return view('blackboard');
+});
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,3 +56,4 @@ Route::get('edit_events', array('uses' => 'ClubsEventsController@showAllEditable
 
 //Delete Events
 Route::get('delete_event/{id}', array('uses' => 'ClubsEventsController@deleteEvent'));
+
