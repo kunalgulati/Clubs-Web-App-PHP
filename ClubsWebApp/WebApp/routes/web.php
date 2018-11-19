@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/bootstrap_palette', function () {
     return view('bootstrap_palette');
@@ -23,7 +23,16 @@ Route::get('/clubs', function () {
     return view('clubs');
 });
 
-//Get the Login Page
-Route::get('login', 'loginController@loginRedirectSfu');
+//Redirect to CAS to authenticate sfu user
+Route::get('login', 'LoginController@redirectToSfu');
+
+//Validate sfu Token
+Route::get('validateUserTicket', 'LoginController@sfuRedirected')
+            ->name('validate');
+
+//Process user info after sfu redirects back
+Route::get('read_user', 'LoginController@readUser')
+        ->name('readUser');
+
 //Process the Login Form
 Route::post('login', array('uses' => 'LoginController@doLogin'));
