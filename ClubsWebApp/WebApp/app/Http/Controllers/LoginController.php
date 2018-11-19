@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function showLogin()
-    {
-        // show the form
-        return view('login');
-    }
-
     public function doLogin()
     {
         // validate the info, create rules for the inputs

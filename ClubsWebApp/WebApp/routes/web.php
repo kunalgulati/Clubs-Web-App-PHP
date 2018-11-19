@@ -24,11 +24,6 @@ Route::get('/clubs', function () {
 });
 
 //Get the Login Page
-Route::get('login', function () {
-    $service_url = "http://localhost:80";
-    $redirect_url = "https://cas.sfu.ca/cas/login?service=".urlencode($service_url);
-    Log::debug($redirect_url);
-    return redirect($redirect_url);
-});
+Route::get('login', 'loginController@loginRedirectSfu');
 //Process the Login Form
 Route::post('login', array('uses' => 'LoginController@doLogin'));
