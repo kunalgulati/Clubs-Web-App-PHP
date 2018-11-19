@@ -641,7 +641,7 @@ $(document).ready(function() {
       $('#hiddenField3').val(description);
       
       if(title!=""){
-         $('#saveJSON').attr('action','saveBlackBoard');
+         $('#saveJSON').attr('action','saveJSON');
          $("#saveJSON").submit();
          canvas.clear();
       }else{
@@ -1059,7 +1059,8 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div>
-		<form id="saveJSON" method="POST" action="saveJSON" style = "margin-left:30px">
+		<form id="saveJSON" method="POST" style = "margin-left:30px">
+            <input type="hidden" name="_token" value="{{ csrf_token()}}">
 			<input type='hidden' id='hiddenField' name='title'/> 
             <input type='hidden' id='hiddenField2' name='json'/>
             <input type='hidden' id='hiddenField3' name='description'/>
