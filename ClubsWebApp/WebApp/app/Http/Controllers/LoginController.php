@@ -17,6 +17,8 @@ class LoginController extends Controller
 
     //NOTE: Unsafe
     public function redirectToSfu(Request $request){
+        //TODO(Ugur): Fix redirect logic.
+        //            Check whether session has ticket and validate that instead.  
         $redirect = htmlentities(url()->previous());
         $service = htmlentities(Route('validate'));
         $sfu_url = self::makeUrl(self::$sfu_login_url, \compact('redirect','service'));
@@ -42,15 +44,11 @@ class LoginController extends Controller
         $xpath = new \DomXpath($xmlReader);
         $uname = $xpath->query('//cas:serviceResponse/cas:authenticationSuccess/cas:user')[0]->nodeValue;
         $utype = $xpath->query('//cas:serviceResponse/cas:authenticationSuccess/cas:authtype')[0]->nodeValue;
-        //echo $xmlReader->saveXML();
         
-        echo $utype;
-        //return redirect($validate_url);
+        //TODO(Ugur): Check if user logged in before, if not register user to db.
 
-    }
+        return redirect($validate_url);
 
-    public function readUser(Request $request){
-        //print_r($request);
     }
 
     public function doLogin()
