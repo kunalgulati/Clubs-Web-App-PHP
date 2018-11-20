@@ -57,7 +57,7 @@ class LoginController extends Controller
         foreach($query_data as $qk => $qv){
             $url .= "$qk=$qv&";
         }
-        return \redirect($url);
+        return redirect($url);
     }
 
     public function welcome(){
@@ -81,6 +81,9 @@ class LoginController extends Controller
         if($request->has('redirectTo')){
             $redirectTo = $request['redirectTo'];
         }
+        // $message = $redirectTo;
+        // return view('debug.hello', compact('message'));
+
         return redirect($redirectTo);
     }
 

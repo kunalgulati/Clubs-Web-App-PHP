@@ -26,16 +26,16 @@ class AuthSFU
             if(self::validateAuthTicket($request, $ticket)){
                 $uname = $request->session()->get('uname','');
                 $auth_type = $request->session()->get('auth_type','');
-                $user = User::where('uname',$uname)->firstOrFail();
+                $user = User::where('uname',$uname)->first();
                 if(!$user){
-                    return redirect(Route('fist_time_user'));
+                    return redirect(Route('first_time_user'));
                 }                 
                 Auth::login($user);
                 return $next($request);
             }
         }
 
-        return redirect('/login');
+        return redirect(Route('login'));
     }
 
     private static function validateAuthTicket($request, $ticket){
