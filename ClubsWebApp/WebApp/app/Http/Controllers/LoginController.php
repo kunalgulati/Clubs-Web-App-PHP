@@ -13,7 +13,6 @@ class LoginController extends Controller
 {
 
     private static $sfu_login_url = 'https://cas.sfu.ca/cas/login';
-    private static $sfu_validate_url = 'https://cas.sfu.ca/cas/serviceValidate';
 
     //NOTE: Unsafe
     public function redirectToSfu(Request $request){
