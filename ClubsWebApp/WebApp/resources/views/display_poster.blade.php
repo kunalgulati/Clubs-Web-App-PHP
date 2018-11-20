@@ -1,8 +1,21 @@
 @extends('main_layout')
 @section('content')
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.min.js"></script>
 
-<?php echo $club_poster; ?>
-<table class="table">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+
+
+<table style = "float:bottom"class="table">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -13,17 +26,31 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($club_poster as $poster)
             <tr>
-                <th scope="row">{{$poster['id']}}</th>
-                <td>{{$poster['title']}}</td>
-                <td>{{$poster['description']}}</td>
-                <td>{{$poster['json']}}</td>
-                <td>{{$poster['club_id']}}</td>
+                <th scope="row">{{$club_poster['id']}}</th>
+                <td>{{$club_poster['title']}}</td>
+                <td>{{$club_poster['description']}}</td>
+                <td id = 'json'>{{$club_poster['json']}}</td>
+                <td>{{$club_poster['club_id']}}</td>
             </tr>
             
-        @endforeach
 
     </tbody>
-</table>
+    </table>    
+    Title:{{$club_poster['title']}}
+    <canvas  id="scanvas" width="1000px" height="1000px"></canvas>    
+    Description: {{$club_poster['description']}}
+
+    
+
+    <script>
+     $(document).ready(function() {
+    var canvas = new fabric.StaticCanvas('scanvas');
+     var json = '<?php echo $club_poster['json']; ?>';
+   
+    canvas.loadFromJSON(json, canvas.renderAll.bind(canvas), function(o, object) {
+    fabric.log(o, object);
+    });
+     });
+    </script>
 @endsection
