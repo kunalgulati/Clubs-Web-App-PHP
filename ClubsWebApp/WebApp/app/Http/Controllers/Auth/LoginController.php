@@ -27,6 +27,9 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    //Sfu redirection links 
+    //TODO:(Ugur)Abstractify login urls for other schools
+    private static $sfu_cas_url = 'https://cas.sfu.ca/cas';
     /**
      * Create a new controller instance.
      *
@@ -36,4 +39,43 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /* Redirects the user to sfu cas login page
+     * NOTE: Unsafe
+     */
+    public function redirectToSfuLogin(Request $request){
+        $service = htmlentities(Route('service'));
+        $renew = 'true';
+        $query_data = \compact('service','renew');
+        $url = self::$sfu_cas_url . '/login?';
+        foreach($query_data as $qk => $qv){
+            $url .= "$qk=$qv&";
+        }
+        return \redirect($url);
+    }
+
+    public function welcome(){
+        echo '<h1> Hello World! </h1>';
+    }
+
+    public function logout(){
+        $url = self::$sfu_cas_url . '/logout?';
+        return \redirect($url);
+    }
+
+    public function registerTicket(Request $request){
+        $ticket = $request->query('ticket', null);
+        if(!$ticket){
+            throw new Exception('Ticket not found');
+        }
+
+        $request->session()->put('auth_ticket', $ticket);
+        
+        $redirectTo = Route('home'); 
+        if($request->has('redirectTo')){
+            $redirectTo = $request['redirectTo'];
+        }
+        return redirect($redirectTo);
+    }
+
 }

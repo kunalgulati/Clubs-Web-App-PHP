@@ -23,22 +23,17 @@ Route::get('/clubs', function () {
     return view('clubs');
 });
 
+
+/*
+ * Login Routes:
+ *      - 'login' -> Redirects to cas.sfu.ca
+ *      - 'login/registerTicket' -> Registers ticket to cas.sfu.ca
+ *      - 'logout' -> Logs user out of cas (TODO:Change to appLogout)
+ */
 Route::get('login', 'LoginController@redirectToSfu')->name('login');
-
 Route::get('login/registerTicket', 'LoginController@registerTicket')->name('service');
-
-//Redirect to CAS to authenticate sfu user
-Route::get('login/welcome', 'LoginController@welcome')->middleware('auth_sfu');
-
 Route::get('logout', 'LoginController@logout');
 
-//Validate sfu Token
-Route::get('validateUserTicket', 'LoginController@sfuRedirected')
-            ->name('validate');
+// Dummy route to test sfu authentication
+Route::get('login/welcome', 'LoginController@welcome')->middleware('auth');
 
-//Process user info after sfu redirects back
-Route::get('read_user', 'LoginController@readUser')
-        ->name('readUser');
-
-//Process the Login Form
-Route::post('login', array('uses' => 'LoginController@doLogin'));
