@@ -1,0 +1,94 @@
+
+@import url('https://fonts.googleapis.com/css?family=Allura|Black+And+White+Picture|Caveat|Courgette|Dancing+Script|Federant|Gloria+Hallelujah|Great+Vibes|Indie+Flower|Kaushan+Script|Lobster|Monoton|Orbitron|PT+Sans|Pacifico|Ranga|Reenie+Beanie|Sacramento|Shadows+Into+Light|Syncopate|Yellowtail');
+.rg {
+	font-family: 'Ranga', cursive;
+}
+.if {
+	font-family: 'Indie Flower', cursive;
+}
+.ps {
+	font-family: 'PT Sans', sans-serif;
+}
+.fd {
+	font-family: 'Federant', cursive;
+}
+.pf {
+	font-family: 'Pacifico', cursive;
+}
+.ls {
+	font-family: 'Lobster', cursive;
+}
+.sc {
+	font-family: 'Syncopate', sans-serif;
+}
+.rb {
+	font-family: 'Reenie Beanie', cursive;
+}
+.al {
+	font-family: 'Allura', cursive;
+}
+.yt {
+	font-family: 'Yellowtail', cursive;
+}
+.mn {
+	font-family: 'Monoton', cursive;
+}
+.sil {
+    font-family: 'Shadows Into Light', cursive;
+}
+.ds{
+    font-family: 'Dancing Script', cursive;
+}
+
+.gh{
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.cg{
+    font-family: 'Courgette', cursive;
+}
+
+.gv{
+    font-family: 'Great Vibes', cursive;
+}
+
+.ks{
+    font-family: 'Kaushan Script', cursive;
+}
+
+.ot{
+    font-family: 'Orbitron', sans-serif;
+}
+
+.cvt{
+    font-family: 'Caveat', cursive;
+}
+
+.canvas-container {
+	border: 1px dotted LightGrey;
+}
+.input {
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid LightGrey;
+}
+#bgColor {
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid LightGrey;
+}
+.a {
+	display: inline-block
+}
+[draggable] {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	/* Required to make elements draggable in old WebKit */
+	-khtml-user-drag: element;
+	-webkit-user-drag: element;
+	cursor: move;
+}
