@@ -23,8 +23,10 @@ Route::get('/clubs', function () {
     return view('clubs');
 });
 
-//Redirect to CAS to authenticate sfu user
 Route::get('login', 'LoginController@redirectToSfu');
+
+//Redirect to CAS to authenticate sfu user
+Route::get('login/welcome', 'LoginController@welcome')->middleware('auth_sfu');
 
 //Validate sfu Token
 Route::get('validateUserTicket', 'LoginController@sfuRedirected')

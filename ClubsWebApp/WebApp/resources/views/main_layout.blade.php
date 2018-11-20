@@ -24,7 +24,7 @@
 						Dropdown Test
 						</a>
 						<div class="dropdown-menu bg-primary dropdown-dark" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="bootstrap_palette" role="button">Bootstrap Pallette </a>
+							<a class="dropdown-item" href="bootstrap_palette" role="button">Bootstrap Palette </a>
 						</div>
 					</li>
 				</ul>

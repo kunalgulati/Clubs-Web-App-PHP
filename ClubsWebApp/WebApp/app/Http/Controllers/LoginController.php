@@ -16,13 +16,14 @@ class LoginController extends Controller
 
     //NOTE: Unsafe
     public function redirectToSfu(Request $request){
-        //TODO(Ugur): Fix redirect logic.
-        //            Check whether session has ticket and validate that instead.  
-        $redirect = htmlentities(url()->previous());
-        $service = htmlentities(Route('validate'));
-        $sfu_url = self::makeUrl(self::$sfu_login_url, \compact('redirect','service'));
-
-        return redirect($sfu_url);
+            $service = htmlentities(route('home'));
+            $renew = 'true';
+            $query_data = \compact('service', 'renew');
+            $url = self::$sfu_login_url . '/?';
+            foreach($query_data as $qk => $qv){
+                $url .= "$qk=$qv&";
+            }
+            return \redirect($url);
     }
 
     //NOTE: Unsafe
@@ -48,6 +49,10 @@ class LoginController extends Controller
 
         return redirect($validate_url);
 
+    }
+
+    public function welcome(){
+        echo '<h1> Hello World! </h1>';
     }
 
     public function doLogin()

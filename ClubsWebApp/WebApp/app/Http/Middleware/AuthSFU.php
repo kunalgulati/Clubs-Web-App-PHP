@@ -31,11 +31,11 @@ class AuthSFU
             }
         }
 
-        return route('login');
+        return redirect('/bootstrap_palette');
     }
 
     private static function validateAuthTicket($request, $ticket){
-        $service = route('service');
+        $service = route('home');
         $query_data = \compact('ticket','service');
 
         $client = new GuzzleHttp\Client(['base_url' => self::$sfu_validate_url]);
