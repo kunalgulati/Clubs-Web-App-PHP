@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -71,7 +77,7 @@ class LoginController extends Controller
 
         $request->session()->put('auth_ticket', $ticket);
         
-        $redirectTo = Route('home'); 
+        $redirectTo = 'login/welcome'; 
         if($request->has('redirectTo')){
             $redirectTo = $request['redirectTo'];
         }

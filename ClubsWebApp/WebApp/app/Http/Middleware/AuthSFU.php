@@ -2,11 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Closure;
-use \App\Http\User;
-use \GuzzleHttp\Client;
+use GuzzleHttp\Client;
 
-class AuthSFU extends Middleware
+class AuthSFU
 {
     private static $sfu_validate_url = 'https://cas.sfu.ca/cas/serviceValidate';
 
@@ -24,8 +26,11 @@ class AuthSFU extends Middleware
             if(self::validateAuthTicket($request, $ticket)){
                 $uname = $request->session()->get('uname','');
                 $auth_type = $request->session()->get('auth_type','');
-                //TODO(Ugur): Check if user logged in before, if not register user to db.
-                                
+                $user = User::where('uname',$uname)->firstOrFail();
+                if(!$user){
+                    return redirect('fist_time_user');
+                }                 
+                Auth::login($user);
                 return $next($request);
             }
         }

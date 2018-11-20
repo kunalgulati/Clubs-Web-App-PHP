@@ -15,9 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sfu_type',20);
+            $table->string('auth_type',20);
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
-            $table->string('sfu_email')->unique();
+            $table->string('uname')->unique();
             $table->timestamp('sfu_email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
