@@ -6,7 +6,7 @@ use Closure;
 use \App\Http\User;
 use \GuzzleHttp\Client;
 
-class AuthSFU
+class AuthSFU extends Middleware
 {
     private static $sfu_validate_url = 'https://cas.sfu.ca/cas/serviceValidate';
 
@@ -20,36 +20,47 @@ class AuthSFU
     public function handle($request, Closure $next)
     {
         if($request->session()->has('auth_ticket')){
-            $ticket = $request->session()->get('auth_ticket', "");
-            if(self::validateAuthTicket($ticket)){
-                $uname = $request->session()->get('uname');
-                $auth_type = $request->session()-get('auth_type');
+            $ticket = $request->session()->get('auth_ticket');
+            if(self::validateAuthTicket($request, $ticket)){
+                $uname = $request->session()->get('uname','');
+                $auth_type = $request->session()->get('auth_type','');
                 //TODO(Ugur): Check if user logged in before, if not register user to db.
-
-                echo $uname . ' ' . $auth_type;
+                                
                 return $next($request);
             }
         }
 
-        return redirect('/bootstrap_palette');
+        return redirect('/login');
     }
 
     private static function validateAuthTicket($request, $ticket){
-        $service = route('home');
+        $service = htmlentities(Route('service'));
         $query_data = \compact('ticket','service');
+        $url = self::$sfu_validate_url . '?';
+        foreach($query_data as $qk => $qv){
+            $url .= "$qk=$qv&";
+        }
 
-        $client = new GuzzleHttp\Client(['base_url' => self::$sfu_validate_url]);
-        $response = $client->request('GET', '/', ['query'=>$query_data]);
+        $guzzleDebugPath = realpath(__DIR__.'/../../../storage/logs/guzzle.txt');
+        $client = new Client(['allow_redirects' => false]);
+        $response = $client->request('GET', $url, ['debug' => fopen($guzzleDebugPath, 'w+')]);
         $xmlStr = (string) $response->getBody()->getContents();
 
-        $xmlReader = new \DOMDocument();
-        $xmlReader->loadXML($xmlStr);
-        $xpath = new \DomXpath($xmlReader);
-        $uname = $xpath->query('//cas:serviceResponse/cas:authenticationSuccess/cas:user')[0]->nodeValue;
-        $auth_type = $xpath->query('//cas:serviceResponse/cas:authenticationSuccess/cas:authtype')[0]->nodeValue;
-        $request->session()->put('uname', $uname);
-        $request->session()->put('auth_type', $auth_type);
-        
-        return ture;
+        try{
+            $xmlReader = new \DOMDocument();
+            $xmlReader->loadXML($xmlStr);
+            $xpath = new \DomXpath($xmlReader);
+            $uname = $xpath->query('//cas:serviceResponse/cas:authenticationSuccess/cas:user')[0]->nodeValue;
+            $auth_type = $xpath->query('//cas:serviceResponse/cas:authenticationSuccess/cas:authtype')[0]->nodeValue;
+            $request->session()->put('uname', $uname);
+            $request->session()->put('auth_type', $auth_type);    
+        }
+        catch(\Exception $e){
+            echo $xmlStr;
+            $request->session()->put('validation_error', $e->getMessage());
+            return false;
+        }
+                
+        return true;
     }
 }
