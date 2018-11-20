@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="{{ URL::asset("css/layout.css") }}">
 		<link rel="stylesheet" href="{{ URL::asset("css/app.css") }}">
 		<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
+		<link rel="stylesheet" href="{{ URL::asset("css/clubpage.css") }}">
         <script src="{{ URL::asset("js/app.js") }}"></script>
     </head>
     <body> 

@@ -39,3 +39,19 @@ Route::post('login', array('uses' => 'LoginController@doLogin'));
 // Register_Club
 Route::get('register_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
 Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
+
+/*
+//Direct to a member page
+Route::get('/member', 'ClubPageController@memberPage');
+
+//Direct to a non-member page
+Route::get('/nonmember', 'ClubPageController@nonMemberPage');
+
+//Direct to an admin page
+Route::get('/admin', 'ClubPageController@adminPage');
+*/
+
+//takes input from the club url and directs it to the club main page
+Route::get('/{name}', 'ClubPageController@clubPage');
+
+
