@@ -36,7 +36,6 @@
 				<div class="nav-item bg-primary">
 					@if (false) <!--logged in-->
 						@yield('account')
-							
 					@else
 					<a class="btn btn-outline-secondary" href="login">
 						Log In

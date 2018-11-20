@@ -28,7 +28,7 @@ class AuthSFU
                 $auth_type = $request->session()->get('auth_type','');
                 $user = User::where('uname',$uname)->firstOrFail();
                 if(!$user){
-                    return redirect('fist_time_user');
+                    return redirect(Route('fist_time_user'));
                 }                 
                 Auth::login($user);
                 return $next($request);
