@@ -38,4 +38,4 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/login/welcome', 'Auth\LoginController@welcome')->middleware('auth');
 
 Route::get('/user/createProfile', 'Auth\RegisterController@createProfile')
-        ->name('first_time_user');
+        ->name('create_profile');

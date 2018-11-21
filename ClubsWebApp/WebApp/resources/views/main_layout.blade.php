@@ -34,8 +34,8 @@
 					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
 				</form>
 				<div class="nav-item bg-primary">
-					@if (false) <!--logged in-->
-						@yield('account')
+					@if (!Auth::guest()) <!--logged in-->
+						@include('account', ['user' => Auth::user()])
 					@else
 					<a class="btn btn-outline-secondary" href="login">
 						Log In

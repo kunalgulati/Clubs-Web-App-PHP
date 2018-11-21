@@ -21,6 +21,10 @@ class AuthSFU
      */
     public function handle($request, Closure $next)
     {
+        if(!Auth::guest()){
+            return $next($request);
+        }
+
         if($request->session()->has('auth_ticket')){
             $ticket = $request->session()->get('auth_ticket');
             if(self::validateAuthTicket($request, $ticket)){
@@ -29,7 +33,6 @@ class AuthSFU
                 $user = User::where('uname',$uname)->first();
                 if(!$user){
                     $user = User::create(\compact('uname','auth_type'));
-                    Auth::login($user);
                 }                 
                 Auth::login($user);
                 return $next($request);
