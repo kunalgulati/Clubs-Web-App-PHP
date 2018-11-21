@@ -21,7 +21,7 @@
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Dropdown Test
+						Debug Dropdown
 						</a>
 						<div class="dropdown-menu bg-primary dropdown-dark" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="bootstrap_palette" role="button">Bootstrap Palette </a>
@@ -33,15 +33,16 @@
 					<input class="form-control" type="search" placeholder="Find a club..." aria-label="Search">
 					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
 				</form>
-				<div class="nav-item bg-primary">
-					@if (!Auth::guest()) <!--logged in-->
-						@include('account', ['user' => Auth::user()])
-					@else
-					<a class="btn btn-outline-secondary" href="login">
-						Log In
-					</a>
-					@endif
-				</div>
+				
+				@if (!Auth::guest()) <!--logged in-->
+					@include('partials.account', ['user' => Auth::user()])
+				@else
+					<div class="nav-item bg-primary">
+						<a class="btn btn-outline-secondary" href="login">
+							Log In
+						</a>
+					</div>
+				@endif
 			</div>
 		</nav>
 
