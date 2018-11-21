@@ -52,6 +52,12 @@
 				@endif
 			</div>
 		</nav>
-        @yield('content')
+		<div class="row mt-5">
+				<div class="col-8 offset-2">
+					@yield('title')
+					@yield('new')
+					@yield('content')
+				</div>
+		</div>
     </body>
 </html>
