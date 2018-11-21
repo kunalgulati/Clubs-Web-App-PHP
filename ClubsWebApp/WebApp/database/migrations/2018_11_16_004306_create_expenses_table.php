@@ -15,12 +15,13 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('expense_name');
             $table->float('amount');
             $table->string('description');
             $table->unsignedInteger('club_id');
+            $table->dateTime('date');
             $table->foreign('club_id')->references('id')->on('clubs');
+            $table->timestamps();
         });
     }
 
