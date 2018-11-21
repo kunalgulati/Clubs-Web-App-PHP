@@ -1,6 +1,13 @@
 @extends('main_layout')
 
 @section('content')
+
+@section('errors')
+    @if($errors->any())
+        @include('errors.errors', $errors)
+    @endif
+@endsection
+
 {{ Form::open(array('url' => 'register_club')) }}
 <section id="cover">
     <div id="cover-caption">
@@ -25,11 +32,7 @@
                                 {{ Form::label('text', 'Club Description') }}
                                 {{ Form::text('textarea', Input::old('textarea'), array('name'=>'information', 'class' => "form-control", 'rows'=>'5' ,'id' => 'clubDescription',  'placeholder' => 'Description')) }}    
                             </div>
-                            <div class="form-group">
-                                {{ Form::label('text', 'President Student Number') }}
-                                {{ Form::number('number', Input::old('number'), array('name'=>'student_id', 'class' => "form-control" ,'id' => 'studentNumber',  'placeholder' => 'Student Number')) }}    
-                            </div>
-                            <input type="submit" class="btn btn-primary">Submit
+                            <input type="submit" class="btn btn-primary">
                         </form>
                     </div>
                 </div>

@@ -29,7 +29,6 @@ Route::get('/clubs', function () {
     return view('clubs');
 });
 
-<<<<<<< HEAD
 //Get the Login Page
 Route::get('login', function () {
     return view('login');
@@ -68,8 +67,6 @@ Route::get('display_dashboard', array('uses' => 'ClubsDashboardController@showDa
 Route::get('register_post', array('uses' => 'ClubsDashboardController@showRegistration'));
 Route::post('register_post', array('uses' => 'ClubsDashboardController@doRegistration'));
 
-=======
-
 /*
  * Login Routes:
  *      - 'login' -> Redirects to cas.sfu.ca
@@ -85,4 +82,3 @@ Route::get('/login/welcome', 'Auth\LoginController@welcome')->middleware('auth')
 
 Route::get('/user/createProfile', 'Auth\RegisterController@createProfile')
         ->name('create_profile');
->>>>>>> sfuLoginUA

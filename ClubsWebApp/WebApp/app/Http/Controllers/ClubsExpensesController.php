@@ -7,10 +7,15 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Expense;
+use App\Club;
 
 
 class ClubsExpensesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function showRegistration()
     {
         // show the form
@@ -41,12 +46,12 @@ class ClubsExpensesController extends Controller
         else{
             //If Validator Passes
             //Find the club Id using the Club Name
-            $club_id = DB::table('clubs')->where('club_name', $club_name)->pluck('id');
+            $club_id = Club::where('club_name',$club_name)->first();
             
             $data=array('expense_name'=>$expenseName,
                 "description"=>$description,
                 "amount"=>$amount,
-                'club_id'=>$club_id[0]
+                'club_id'=>$club_id
             );
             if(DB::table('expenses')->insert($data)){
                 return Redirect::to('/');

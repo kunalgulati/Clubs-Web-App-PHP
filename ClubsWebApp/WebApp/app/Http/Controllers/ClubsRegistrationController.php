@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-Use \DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Club;
 
 class ClubsRegistrationController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function showRegistration()
     {
         // show the form
@@ -20,26 +25,29 @@ class ClubsRegistrationController extends Controller
     public function doRegistration(Request $request)
     {
         $club_name = $request->input('club_name');
-        $president_id = $request->input('student_id');
+        $founder_id = Auth::user()->id;
         $information = $request->input('information');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
             'club_name' => 'required',
-            'student_id' => 'required|numeric',
         ]);
         if ($validator->fails()) {
-            return Redirect::to('regitser_club')
+            return Redirect::to('register_club')
                 ->withErrors($validator) // send back all errors to the login form
                 ->withInput(); // send back the input (not the password) so that we can repopulate the form
         }
         else{
-            $data=array('club_name'=>$club_name,"information"=>$information, 'president_id'=>$president_id);
-            if(DB::table('clubs')->insert($data)){
+            $data=array(
+                'club_name'=>$club_name,
+                "information"=>$information,
+                'founder_id'=>$founder_id,);
+                
+            if(Club::create($data)){
                 return Redirect::to('/');
             }
             else{
-                return Redirect::to('regitser_club')
+                return Redirect::to('register_club')
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }

@@ -46,7 +46,7 @@
 				@endif
 			</div>
 		</nav>
-
+		@yield('errors')
         @yield('content')
     </body>
 </html>

@@ -18,6 +18,11 @@ class CreateClubsTable extends Migration
             $table->timestamps();
             $table->string('club_name')->unique();
             $table->string('information');
+            $table->integer('founder_id')->unsigned();
+        });
+
+        Schema::table('clubs', function (Blueprint $table) {
+            $table->foreign('founder_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

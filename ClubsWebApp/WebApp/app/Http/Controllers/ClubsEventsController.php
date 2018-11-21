@@ -13,6 +13,10 @@ use App\Event;
 class ClubsEventsController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function showRegistration()
     {
         // show the create event form

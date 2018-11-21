@@ -12,6 +12,10 @@ use App\Dashboard_post;
 
 class ClubsDashboardController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function showDashboard()
     {
         $posts = Dashboard_post::all();
