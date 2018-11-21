@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-Use \DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -65,7 +64,9 @@ class ClubsExpensesController extends Controller
 
     //Display the expenses
     public function showExpenses(){
-        $expenses = Expense::all();
+        $user_id = Auth::user()->id;
+        $clubs = Club::where('founder_id',$user_id)->pluck('id');
+        $expenses = Expense::whereIn('club_id', $clubs)->get();
         return view('display_expenses',compact('expenses'));
     }
 

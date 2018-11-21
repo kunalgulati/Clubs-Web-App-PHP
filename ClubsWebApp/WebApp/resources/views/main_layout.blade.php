@@ -22,7 +22,7 @@
 						Manage Clubs
 						</a>
 						<div class="dropdown-menu bg-primary dropdown-dark" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="register_expenses" role="button">Expenses</a>
+							<a class="dropdown-item" href="display_expenses" role="button">Expenses</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
