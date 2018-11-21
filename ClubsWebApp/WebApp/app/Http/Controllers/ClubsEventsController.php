@@ -62,10 +62,10 @@ class ClubsEventsController extends Controller
                 'club_id'=>$club_id[0]
             );
             if(DB::table('events')->insert($data)){
-                return Redirect::to('/');
+                return Redirect::to('/display_events');
             }
             else{
-                return Redirect::to('register_event')
+                return Redirect::to('/register_event')
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }
