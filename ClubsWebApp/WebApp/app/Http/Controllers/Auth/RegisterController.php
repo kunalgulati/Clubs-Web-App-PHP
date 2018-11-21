@@ -74,4 +74,8 @@ class RegisterController extends Controller
         $message = 'createProfile';
         return view('debug.hello',\compact('message'));
     }
+
+    public function saveProfile(){
+        
+    }
 }
