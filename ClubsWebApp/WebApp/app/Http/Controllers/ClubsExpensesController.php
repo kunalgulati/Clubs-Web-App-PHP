@@ -27,14 +27,14 @@ class ClubsExpensesController extends Controller
     //Find the club_id
     public function doRegistration(Request $request)
     {
-        $expenseName = $request->input('expense_name');
+        $expense_name = $request->input('expense_name');
         $description = $request->input('description');
         $amount = $request->input('amount');
         $club_name = $request->input('club_name');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
-            // 'expenseName'=> 'required',
+            'expense_name'=> 'required',
             'club_name' => 'required',
             'amount' => 'required|numeric',
         ]);
@@ -46,14 +46,14 @@ class ClubsExpensesController extends Controller
         else{
             //If Validator Passes
             //Find the club Id using the Club Name
-            $club_id = Club::where('club_name',$club_name)->first();
+            $club_id = Club::where('club_name',$club_name)->first()->id;
             
-            $data=array('expense_name'=>$expenseName,
+            $data=array('expense_name'=>$expense_name,
                 "description"=>$description,
                 "amount"=>$amount,
                 'club_id'=>$club_id
             );
-            if(DB::table('expenses')->insert($data)){
+            if(Expense::create($data)){
                 return Redirect::to('/');
             }
             else{
