@@ -65,6 +65,10 @@ class LoginController extends Controller
     }
 
     public function logout(){
+        if(Auth::guest()){
+            return \redirect(Route('home'));
+        }
+        Auth::logout();
         $url = self::$sfu_cas_url . '/logout?';
         return \redirect($url);
     }
