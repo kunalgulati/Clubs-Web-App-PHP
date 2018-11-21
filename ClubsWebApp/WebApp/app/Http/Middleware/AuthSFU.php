@@ -28,7 +28,8 @@ class AuthSFU
                 $auth_type = $request->session()->get('auth_type','');
                 $user = User::where('uname',$uname)->first();
                 if(!$user){
-                    return redirect(Route('first_time_user'));
+                    $user = User::create(\compact('uname','auth_type'));
+                    Auth::login($user);
                 }                 
                 Auth::login($user);
                 return $next($request);

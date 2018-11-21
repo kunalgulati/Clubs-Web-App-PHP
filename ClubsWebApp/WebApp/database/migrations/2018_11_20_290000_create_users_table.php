@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('uname')->unique();
             $table->string('auth_type',20);
-            $table->integer('profile_id')->unsigned();
+            $table->integer('profile_id')->unsigned()->nullable();
             $table->timestamp('sfu_email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
