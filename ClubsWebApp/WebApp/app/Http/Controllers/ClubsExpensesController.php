@@ -73,8 +73,7 @@ class ClubsExpensesController extends Controller
     //Delete the Expense
     public function deleteExpense($id){
         Expense::where('id', $id)->delete();
-        $expenses = Expense::all();
-        return view('display_expenses', compact('expenses'));
+        return redirect('/display_expenses');
     }
 
     //Edit an Expense
