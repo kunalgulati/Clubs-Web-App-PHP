@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-Use \DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+Use App\Club;
 use App\Event;
 
 
@@ -52,16 +52,16 @@ class ClubsEventsController extends Controller
         else{
             //If Validator Passes
             //Find the club Id using the Club Name
-            $club_id = DB::table('clubs')->where('club_name', $club_name)->pluck('id');
+            $club_id = Club::where('club_name',$club_name)->first()->id;
             
             $data=array('event_name'=>$eventName,
                 "description"=>$description,
                 "room"=>$room,
                 "address"=>$address,
                 "city"=>$city,
-                'club_id'=>$club_id[0]
+                'club_id'=>$club_id
             );
-            if(DB::table('events')->insert($data)){
+            if(Event::create($data)){
                 return Redirect::to('/display_events');
             }
             else{
