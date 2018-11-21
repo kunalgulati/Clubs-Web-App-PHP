@@ -121,28 +121,28 @@
 					style="margin: 10px 0 0 50px; height: 24px;">
 					<button data-toggle="tooltip" data-placement="bottom" id="remove"
 						title="delete the element" type="button" class="btn btn-outline-danger"
-						style="background: url( {{ URL::asset('image/trash.png')}} no-repeat; height: 24px;">
+						style="background: url({{ ('image/trash.png')}}) no-repeat; height: 24px;">
 						<i class="fa fa-trash" aria-hidden="true"></i>
 					</button>
 					<button data-toggle="tooltip" data-placement="bottom" id="toback"
 						title="Bring to back" type="button" class="btn btn-outline-primary"
-						style="background: url( {{ URL::asset('image/toback.png')}} no-repeat; height: 24px;">
+						style="background: url( {{ ('image/toback.png')}}) no-repeat; height: 24px;">
 						<i class="fa fa-level-down" aria-hidden="true"></i>
 					</button>
 					<button data-toggle="tooltip" data-placement="bottom"
 						title="Bring to front" type="button" id="tofront"
 						class="btn btn-outline-primary"
-						style="background: url( {{ URL::asset('image/tofront.png')}} no-repeat; height: 24px;">
+						style="background: url( {{('image/tofront.png')}}) no-repeat; height: 24px;">
 						<i class="fa fa-level-up" aria-hidden="true"></i>
 					</button>
 					<button data-toggle="tooltip" data-placement="bottom" title="Copy"
 						id="copy" type="button" class="btn btn-outline-primary"
-						style="background: url( {{ URL::asset('image/copy.png')}} no-repeat; height: 24px;">
+						style="background: url( {{('image/copy.png')}}) no-repeat; height: 24px;">
 						<i class="fa fa-clone" aria-hidden="true"></i>
 					</button>
 					<button data-toggle="tooltip" data-placement="bottom" id="unselect"
 						title="Selection Cancel" type="button" class="btn btn-outline-primary"
-						style="background: url( {{ URL::asset('image/cancel.png')}} no-repeat; height: 24px;">
+						style="background: url( {{('image/cancel.png')}}) no-repeat; height: 24px;">
 						<i class="fa fa-remove" aria-hidden="true"></i>
 					</button>
 				</div>
@@ -216,20 +216,20 @@
 							<div class="btn-group" role="group" aria-label="..."
 								style="margin: 10px">
 								<button id="leftP" type="button" class="btn btn"
-									style="background: url({{ URL::asset('image/left.png')}} no-repeat">"{{ URL::asset("js/blackboard.js") }}"
+									style="background: url({{('image/left.png')}}) no-repeat">
 									<i class="fa fa-align-left"
-										style="background: url( {{ URL::asset('image/toback.png')}} no-repeat;"></i>
+										style="background: url( {{('image/toback.png')}}) no-repeat;"></i>
 								</button>
 								<button id="centerP" type="button" class="btn btn"
-									style="background: url( {{ URL::asset('image/center.png')}} no-repeat;">
+									style="background: url( {{('image/center.png')}}) no-repeat;">
 									<i class="fa fa-align-center"></i>
 								</button>
 								<button id="rightP" type="button" class="btn btn"
-									style="background: url( {{ URL::asset('image/right.png')}} no-repeat;">
+									style="background: url( {{('image/right.png')}}) no-repeat;">
 									<i class="fa fa-align-right"></i>
 								</button>
 								<button id="justifyP" type="button" class="btn btn"
-									style="background: url( {{ URL::asset('image/justify.png')}} no-repeat;">
+									style="background: url( {{('image/justify.png')}}) no-repeat;">
 									<i class="fa fa-align-justify"></i>
 								</button>
 							</div>
@@ -240,15 +240,15 @@
 						<div class="custom-item-body text-center">
 							<div class="btn-group" role="group" aria-label="...">
 								<button id="bold" type="button" class="btn btn"
-									style="background: url( {{ URL::asset('image/bold.png')}} no-repeat;">
+									style="background: url( {{('image/bold.png')}}) no-repeat;">
 									<i class="fa fa-bold"></i>
 								</button>
 								<button id="italic" type="button" class="btn btn"
-									style="background: url( {{ URL::asset('image/italic.png')}} no-repeat;">
+									style="background: url( {{('image/italic.png')}}) no-repeat;">
 									<i class="fa fa-italic"></i>
 								</button>
 								<button id="underline" type="button" class="btn btn"
-									style="background: url( {{ URL::asset('image/underline.png')}} no-repeat;">
+									style="background: url( {{('image/underline.png')}}) no-repeat;">
 									<i class="fa fa-underline"></i>
 								</button>
 							</div>
