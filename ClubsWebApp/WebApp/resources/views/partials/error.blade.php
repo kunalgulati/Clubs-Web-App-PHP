@@ -1,1 +1,1 @@
-<li>{{ $error }}</li>
+<p> {{ $error }} </p>

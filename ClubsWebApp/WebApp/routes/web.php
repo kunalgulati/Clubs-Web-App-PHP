@@ -70,7 +70,7 @@ Route::post('register_post', array('uses' => 'ClubsDashboardController@doRegistr
 /*
  * Login Routes:
  *      - 'login' -> Redirects to cas.sfu.ca
- *      - 'login/registerTicket' -> Registers ticket to cas.sfu.ca
+ *      - 'login/registerTicket' -> Registers ticket from cas.sfu.ca
  *      - 'logout' -> Logs user out of cas (TODO:Change to appLogout)
  */
 Route::get('login', 'Auth\LoginController@redirectToSfuLogin')->name('login');
@@ -80,5 +80,10 @@ Route::get('logout', 'Auth\LoginController@logout');
 // Dummy route to test sfu authentication
 Route::get('/login/welcome', 'Auth\LoginController@welcome')->middleware('auth');
 
+
+/*
+ * Profile Routes:
+ *      - 'create' -> Initiates profile creation' TODO:(UGUR) Implement
+ */
 Route::get('/user/createProfile', 'Auth\RegisterController@createProfile')
         ->name('create_profile');

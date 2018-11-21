@@ -53,7 +53,7 @@ class ClubsExpensesController extends Controller
                 'club_id'=>$club_id
             );
             if(Expense::create($data)){
-                return Redirect::to('/');
+                return Redirect::to('/display_expenses');
             }
             else{
                 return Redirect::to('display_expenses')

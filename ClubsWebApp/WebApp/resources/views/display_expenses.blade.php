@@ -5,7 +5,7 @@
     <div class="col-8 offset-2">
         <div class="row mt-2 mb-3">
             <div class="col-4 offset-4">
-                <a class="btn btn-large btn-outline-primary" href="register_expenses" role="button">Add New Expense</a>
+                <a class="btn btn-large btn-outline-primary" href="/register_expenses" role="button">Add New Expense</a>
             </div>
         </div>
         <table class="table table-light table-bordered table-hover">
@@ -31,7 +31,6 @@
                         <td><a href="delete_expense/{{ $expense->id }}" class="btn btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
-        
             </tbody>
         </table>
     </div>
