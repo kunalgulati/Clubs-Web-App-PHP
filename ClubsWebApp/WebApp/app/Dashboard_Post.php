@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Expense extends Model
+class Dashboard_post extends Model
 {
     protected $fillable = [
-        'expense_name', 'amount'
+        'title', 'type', 'url'
     ];
 }
