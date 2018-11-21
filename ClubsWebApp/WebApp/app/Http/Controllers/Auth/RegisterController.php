@@ -69,4 +69,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function createProfile(){
+        $message = 'createProfile';
+        return view('debug.hello',\compact('message'));
+    }
+
+    public function saveProfile(){
+        
+    }
 }
