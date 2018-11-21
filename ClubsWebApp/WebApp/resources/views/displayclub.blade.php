@@ -1,6 +1,6 @@
 @extends('main_layout')
+
 @section('content')
-<!DOCTYPE>
 <div class = "table_display">
 <table class="table">
     <thead>

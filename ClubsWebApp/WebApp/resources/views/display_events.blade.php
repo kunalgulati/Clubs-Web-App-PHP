@@ -1,17 +1,11 @@
 @extends('main_layout')
 
 @section('new')
-<div class="row">
-    <div class="col-4 offset-4 text-center">
-        <a class="btn btn-large btn-outline-primary" href="register_event">Add New Event</a>
-    </div>
-</div>
+    @include('partials.new', ['href'=>'/register_event', 'text'=>'Post New Event'])
 @endsection
 
-@section('title')
-<h1 class="mb-3 text-center">
-    Events of your Clubs
-</h1>
+@section('header')
+    @include('partials.header', ['header'=>'Events of your clubs'])
 @endsection
 
 @section('content')
