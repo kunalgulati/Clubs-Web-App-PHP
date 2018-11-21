@@ -50,9 +50,9 @@ class AuthSFU
             $url .= "$qk=$qv&";
         }
 
-        $guzzleDebugPath = realpath(__DIR__.'/../../../storage/logs/guzzle.txt');
+        //$guzzleDebugPath = realpath(__DIR__.'/../../../storage/logs/guzzle.txt');
         $client = new Client(['allow_redirects' => false]);
-        $response = $client->request('GET', $url, ['debug' => fopen($guzzleDebugPath, 'w+')]);
+        $response = $client->request('GET', $url); //['debug' => fopen($guzzleDebugPath, 'w+')]);
         $xmlStr = (string) $response->getBody()->getContents();
 
         try{
