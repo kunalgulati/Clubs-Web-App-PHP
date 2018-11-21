@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClubRegister extends Migration
+class CreateExpensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateClubRegister extends Migration
      */
     public function up()
     {
-        Schema::create('clubs', function (Blueprint $table) {
+        Schema::create('expenses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('club_name')->unique();        
-            $table->string('information');
+            $table->string('expense_name');
+            $table->float('amount');
+            $table->string('description');
+            $table->unsignedInteger('club_id');
+            $table->foreign('club_id')->references('id')->on('clubs');
         });
     }
 
@@ -28,8 +31,6 @@ class CreateClubRegister extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('clubs');
-
+        Schema::dropIfExists('expenses');
     }
 }

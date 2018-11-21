@@ -39,3 +39,31 @@ Route::post('login', array('uses' => 'LoginController@doLogin'));
 // Register_Club
 Route::get('register_club', array('uses' => 'ClubsRegistrationController@showRegistration'));
 Route::post('register_club', array('uses' => 'ClubsRegistrationController@doRegistration'));
+
+//                      *********************    EXPENSE     *********************                      ///
+// Register_Expenses
+Route::get('register_expenses', array('uses' => 'ClubsExpensesController@showRegistration'));
+Route::post('register_expenses', array('uses' => 'ClubsExpensesController@doRegistration'));
+//Display Register Expenses
+Route::get('display_expenses', array('uses' => 'ClubsExpensesController@showExpenses'));
+//Delete Expense
+Route::get('delete_expense/{id}', array('uses' => 'ClubsExpensesController@deleteExpense'));
+
+//                      *********************    EVENTS     *********************                      ///
+// Register An Event
+Route::get('register_event', array('uses' => 'ClubsEventsController@showRegistration'));
+Route::post('register_event', array('uses' => 'ClubsEventsController@doRegistration'));
+//Show All Events 
+Route::get('display_events', array('uses' => 'ClubsEventsController@showAllEvents'));
+//Edit Events
+Route::get('edit_events', array('uses' => 'ClubsEventsController@showAllEditableEvents'));
+//Delete Events
+Route::get('delete_event/{id}', array('uses' => 'ClubsEventsController@deleteEvent'));
+
+//                      *********************    CLUB DASHBOARD     *********************                      ///
+//Display Club Dashboard
+Route::get('display_dashboard', array('uses' => 'ClubsDashboardController@showDashboard'));
+//Create a Dashboard POST
+Route::get('register_post', array('uses' => 'ClubsDashboardController@showRegistration'));
+Route::post('register_post', array('uses' => 'ClubsDashboardController@doRegistration'));
+
