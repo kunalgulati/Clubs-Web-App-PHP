@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Club;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Club_poster;
 Use \DB;
 
-class Club_posterController extends Controller
+class PosterController extends Controller
 {
     public function loadPoster(Request $request){
         $title = $request->input('title');

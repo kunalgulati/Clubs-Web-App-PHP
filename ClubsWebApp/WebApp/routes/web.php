@@ -10,12 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/blackboard', function () {
     return view('blackboard');
 });
 
-Route::post('/saveJSON', 'Club_posterController@savePoster');
-Route::post('/display_blackboard', 'Club_posterController@loadPoster');
+Route::post('/saveJSON', 'Club\PosterController@savePoster');
+Route::post('/display_blackboard', 'Club\PosterController@loadPoster');
 
 
 
@@ -33,14 +35,6 @@ Route::get('/bootstrap_palette', function () {
 
 Route::get('/displayclubs','DisplayController@displayClub');
 Route::get('/displaymembers','DisplayController@displayMember');
-Route::get('/clubs', function () {
-    return view('clubs');
-});
-
-//Get the Login Page
-Route::get('login', function () {
-    return view('login');
-});
 
 /*
  * Club Routes:

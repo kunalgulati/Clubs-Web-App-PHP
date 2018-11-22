@@ -22,7 +22,7 @@ class DashboardController extends Controller
     {
         $posts = Dashboard_post::all();
         $club_posters = Club_poster::all();
-        return view('display_dashboard',compact('posts','club_posters'));
+        return view('clubs.dashboard.display_dashboard',compact('posts','club_posters'));
     }
 
     //SHOW Registeration Form
