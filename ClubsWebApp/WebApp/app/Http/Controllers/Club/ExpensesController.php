@@ -1,20 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
-Use \DB;
+namespace App\Http\Controllers\Club;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Expense;
+use App\Club;
 
 
-class ClubsExpensesController extends Controller
+class ExpensesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function showRegistration()
     {
         // show the form
-        return view('register_expenses');
+        return view('clubs.expenses.register_expenses');
     }
 
     //POST an expense
@@ -22,34 +28,32 @@ class ClubsExpensesController extends Controller
     //Find the club_id
     public function doRegistration(Request $request)
     {
-        $expenseName = $request->input('expense_name');
+        $expense_name = $request->input('expense_name');
         $description = $request->input('description');
         $amount = $request->input('amount');
-        $club_name = $request->input('club_name');
+        $club_id = $request->input('club_id');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
-            // 'expenseName'=> 'required',
-            'club_name' => 'required',
+            'expense_name'=> 'required',
+            'club_id' => 'required',
             'amount' => 'required|numeric',
         ]);
         if ($validator->fails()) {
-            return Redirect::to('register_expenses')
+            return Redirect::to('/register_expenses')
                 ->withErrors($validator) // send back all errors to the login form
                 ->withInput(); // send back the input (not the password) so that we can repopulate the form
         }
         else{
             //If Validator Passes
-            //Find the club Id using the Club Name
-            $club_id = DB::table('clubs')->where('club_name', $club_name)->pluck('id');
-            
-            $data=array('expense_name'=>$expenseName,
+            //Find the club Id using the Club Name            
+            $data=array('expense_name'=>$expense_name,
                 "description"=>$description,
                 "amount"=>$amount,
-                'club_id'=>$club_id[0]
+                'club_id'=>$club_id
             );
-            if(DB::table('expenses')->insert($data)){
-                return Redirect::to('/');
+            if(Expense::create($data)){
+                return Redirect::to('/display_expenses');
             }
             else{
                 return Redirect::to('display_expenses')
@@ -60,20 +64,21 @@ class ClubsExpensesController extends Controller
 
     //Display the expenses
     public function showExpenses(){
-        $expenses = Expense::all();
-        return view('display_expenses',compact('expenses'));
+        $user_id = Auth::user()->id;
+        $clubs = Club::where('founder_id',$user_id)->pluck('id');
+        $expenses = Expense::whereIn('club_id', $clubs)->get();
+        return view('clubs.expenses.display_expenses',compact('expenses'));
     }
 
     //Delete the Expense
     public function deleteExpense($id){
         Expense::where('id', $id)->delete();
-        $expenses = Expense::all();
-        return view('display_expenses', compact('expenses'));
+        return redirect('/display_expenses');
     }
 
     //Edit an Expense
     public function editExpense($id){
         $expense = Expense::where('id', $id)->get();
-        return view('edit_expense', compact('expense'));
+        return view('clubs.expenses.edit_expense', compact('expense'));
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Club;
 
-Use \DB;
+use DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -11,8 +12,12 @@ use App\Dashboard_post;
 use App\Club_poster;
 
 
-class ClubsDashboardController extends Controller
+class DashboardController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function showDashboard()
     {
         $posts = Dashboard_post::all();
@@ -23,7 +28,7 @@ class ClubsDashboardController extends Controller
     //SHOW Registeration Form
     public function showRegistration()
     {
-        return view('register_post');
+        return view('clubs.dashboard.register_post');
     }
 
     //Register a Dashboard_Post
@@ -75,10 +80,10 @@ class ClubsDashboardController extends Controller
                 'club_id'=>$club_id[0]
             );
             if(DB::table('dashboard_posts')->insert($data)){
-                return Redirect::to('/');
+                return Redirect::to('/display_dashboard');
             }
             else{
-                return Redirect::to('register_post')
+                return Redirect::to('/register_post')
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }

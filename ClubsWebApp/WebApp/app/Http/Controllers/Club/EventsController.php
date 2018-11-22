@@ -1,22 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Club;
 
-Use \DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+Use App\Club;
 use App\Event;
 
 
-class ClubsEventsController extends Controller
+class EventsController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
     public function showRegistration()
     {
         // show the create event form
-        return view('create_event');
+        return view('clubs.events.create_event');
     }
     
     //POST an expense
@@ -30,9 +35,9 @@ class ClubsEventsController extends Controller
         $room = $request->input('room');
         $address = $request->input('address');
         $city = $request->input('city');
-        $club_name = $request->input('club_name');
-        $date = strftime('%Y-%m-%dT%H:%M:%S', strtotime($request->input('event_date')));
-        
+        $time = $request->input('time');
+        $date = $request->input('date');
+        $club_id = $request->input('club_id');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
@@ -40,8 +45,9 @@ class ClubsEventsController extends Controller
             'room' => 'required',
             'city' => 'required',
             'address' => 'required',
-            'club_name' => 'required',
-            'event_date'=> 'required'
+            'club_id' => 'required',
+            'date' => 'required',
+            'time' => 'required'
         ]);
         if ($validator->fails()) {
             return Redirect::to('register_event')
@@ -50,22 +56,21 @@ class ClubsEventsController extends Controller
         }
         else{
             //If Validator Passes
-            //Find the club Id using the Club Name
-            $club_id = DB::table('clubs')->where('club_name', $club_name)->pluck('id');
-            
+            $dateTime = date('Y-m-d H:i:s', strtotime("$date $time"));
+
             $data=array('event_name'=>$eventName,
                 "description"=>$description,
                 "room"=>$room,
                 "address"=>$address,
                 "city"=>$city,
-                'club_id'=>$club_id[0],
-                "event_date"=>$date
+                'club_id'=>$club_id,
+                'date' => $dateTime
             );
-            if(DB::table('events')->insert($data)){
-                return Redirect::to('/');
+            if(Event::create($data)){
+                return Redirect::to('/display_events');
             }
             else{
-                return Redirect::to('register_event')
+                return Redirect::to('/register_event')
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }
@@ -75,20 +80,19 @@ class ClubsEventsController extends Controller
     //TODO
     public function showAllEvents(){
         $events = Event::all();
-        return view('display_events', compact('events'));
+        return view('clubs.events.display_events', compact('events'));
     }
 
     //show the list of Editable Events
     public function showAllEditableEvents(){
         $events = Event::all();
-        return view('edit_events', compact('events'));
+        return view('clubs.events.edit_events', compact('events'));
     }
 
     //Delete an Event
     public function deleteEvent($id){
         Event::where('id', $id)->delete();
-        $events = Event::all();
-        return view('edit_events', compact('events'));
+        return redirect('/display_events');
     }
 
 

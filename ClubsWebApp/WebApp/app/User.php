@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Club;
 
 class User extends Authenticatable
 {
@@ -16,15 +17,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'uname', 
+        'auth_type', 
+        'profile_id',
     ];
 
+
+    protected $attributes = [
+        'profile_id' => null,
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
+    
+    public function getClubs(){
+        $clubs = Club::where('founder_id',$this->id)->pluck('club_name','id')->all();
+        return $clubs;
+    }
 }

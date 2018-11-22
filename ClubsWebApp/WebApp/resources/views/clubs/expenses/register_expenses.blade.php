@@ -1,9 +1,6 @@
 @extends('main_layout')
 
 @section('content')
-<head>
-	<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
-</head>
 {{ Form::open(array('url' => 'register_expenses')) }}
 <section id="cover">
     <div id="cover-caption">
@@ -12,12 +9,9 @@
                 <div class="col-sm-10 offset-sm-1 text-center">
                     <h1 class="display-4">Register your Club Expenses</h1>
                     <!-- if there are login errors, show them here -->
-                    <p>
-                        <!-- {{ $errors->first('expense_name') }} -->
-                        @if ($errors->any())
-                            {{ implode('', $errors->all('<div>:message</div>')) }}
+                        @if($errors->any())
+                            @include('errors.errors',['title'=>'Registration Failed!','errors'=>$errors])
                         @endif
-                    </p>
                     <div class="info-form">
                         <form class='col-6' action="" method="post" role="form">
                             <div class="form-group">
@@ -36,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'Club Name') }}
-                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'club_name', 'class' => "form-control" ,'id' => 'club_name',  'placeholder' => 'SFU Ice Hockey Club')) }}    
+                                {{ Form::select('club_id', Auth::user()->getClubs(), Input::old('club_id'), array('name'=>'club_id', 'class' => "form-control" ,'id' => 'club_id'))}}
                             </div>
                             <input type="submit" class="btn btn-primary">
                         </form>
