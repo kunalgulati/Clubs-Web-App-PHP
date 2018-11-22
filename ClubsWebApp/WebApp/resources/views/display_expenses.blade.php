@@ -5,7 +5,7 @@
 @endsection
 
 @section('new')
-    @include('partials.new', ['href' => '/register_expense', 'text' => 'Record New Expense'])
+    @include('partials.new', ['href' => '/register_expenses', 'text' => 'Record New Expense'])
 @endsection
 
 @section('content')
