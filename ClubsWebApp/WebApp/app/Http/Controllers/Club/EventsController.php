@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Club;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -10,7 +11,7 @@ Use App\Club;
 use App\Event;
 
 
-class ClubsEventsController extends Controller
+class EventsController extends Controller
 {
 
     public function __construct(){
@@ -20,7 +21,7 @@ class ClubsEventsController extends Controller
     public function showRegistration()
     {
         // show the create event form
-        return view('create_event');
+        return view('clubs.events.create_event');
     }
     
     //POST an expense
@@ -79,13 +80,13 @@ class ClubsEventsController extends Controller
     //TODO
     public function showAllEvents(){
         $events = Event::all();
-        return view('display_events', compact('events'));
+        return view('clubs.events.display_events', compact('events'));
     }
 
     //show the list of Editable Events
     public function showAllEditableEvents(){
         $events = Event::all();
-        return view('edit_events', compact('events'));
+        return view('clubs.events.edit_events', compact('events'));
     }
 
     //Delete an Event

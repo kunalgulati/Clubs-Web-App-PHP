@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Club;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Club;
 
-class ClubsRegistrationController extends Controller
+class RegistrationController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -19,7 +20,7 @@ class ClubsRegistrationController extends Controller
     public function showRegistration()
     {
         // show the form
-        return view('register_club');
+        return view('clubs.register_club');
     }
 
     public function doRegistration(Request $request)

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Club;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -9,7 +11,7 @@ use App\Expense;
 use App\Club;
 
 
-class ClubsExpensesController extends Controller
+class ExpensesController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -18,7 +20,7 @@ class ClubsExpensesController extends Controller
     public function showRegistration()
     {
         // show the form
-        return view('register_expenses');
+        return view('clubs.expenses.register_expenses');
     }
 
     //POST an expense
@@ -38,7 +40,7 @@ class ClubsExpensesController extends Controller
             'amount' => 'required|numeric',
         ]);
         if ($validator->fails()) {
-            return Redirect::to('register_expenses')
+            return Redirect::to('/register_expenses')
                 ->withErrors($validator) // send back all errors to the login form
                 ->withInput(); // send back the input (not the password) so that we can repopulate the form
         }
@@ -65,7 +67,7 @@ class ClubsExpensesController extends Controller
         $user_id = Auth::user()->id;
         $clubs = Club::where('founder_id',$user_id)->pluck('id');
         $expenses = Expense::whereIn('club_id', $clubs)->get();
-        return view('display_expenses',compact('expenses'));
+        return view('clubs.expenses.display_expenses',compact('expenses'));
     }
 
     //Delete the Expense
@@ -77,6 +79,6 @@ class ClubsExpensesController extends Controller
     //Edit an Expense
     public function editExpense($id){
         $expense = Expense::where('id', $id)->get();
-        return view('edit_expense', compact('expense'));
+        return view('clubs.expenses.edit_expense', compact('expense'));
     }
 }
