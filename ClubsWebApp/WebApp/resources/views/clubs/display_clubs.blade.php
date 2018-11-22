@@ -30,7 +30,7 @@
             <td>{{$club->founder()->uname}}</td>
             <td>{{$club['information']}}</td>
             <td>
-            <form method= "post" action="/clubpage/{{$club->id}}">
+            <form method= "post" action="#">
             <input type="hidden" name="_token" value="{{ csrf_token()}}">
             <input type = "submit" value = "See details">
             </form>
