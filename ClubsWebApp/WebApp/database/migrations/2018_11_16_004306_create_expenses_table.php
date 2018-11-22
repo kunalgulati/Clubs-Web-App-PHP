@@ -19,7 +19,6 @@ class CreateExpensesTable extends Migration
             $table->float('amount');
             $table->string('description');
             $table->unsignedInteger('club_id');
-            $table->dateTime('date');
             $table->foreign('club_id')->references('id')->on('clubs');
             $table->timestamps();
         });
