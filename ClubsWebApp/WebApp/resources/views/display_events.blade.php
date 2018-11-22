@@ -9,26 +9,29 @@
 @endsection
 
 @section('content')
-@foreach($events as $event)
-    
-@endforeach
-<div class="card">
-        <img class="card-img-top" src="https://img.icons8.com/color/96/000000/university.png" alt="Event Banner">
-        <div class="card-body">
-            <h5 class="card-title">{{$event->name}}</h5>
-            <p class="card-text">{{$event->description}}</p>
+<div class="row">
+    <div class="col-6 offset-3">
+        @foreach($events as $event)
+        <div class="card">
+            <img class="card-img-top" src="{{URL::asset('svg/default_event.jpg')}}" alt="Event Banner">
+            <div class="card-body">
+                <h5 class="card-title">{{$event->name}}</h5>
+                <p class="card-text">{{$event->description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Club: {{$event->getClubName()}}
+                <li class="list-group-item">Date: {{$event->getDate()}}</li>
+                <li class="list-group-item">Time: {{$event->getTime()}}</li>
+                <li class="list-group-item">Location: {{$event->room}}</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link btn btn-info" role="button">Edit</a>
+                <a href="/delete_event/{{$event->id}}" class="card-link btn btn-danger" role="button">Delete</a>
+            </div>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Club: {{$event->getClubName()}}
-            <li class="list-group-item">Date: {{$event->date->format('m/d/Y')}}</li>
-            <li class="list-group-item">Time: {{$event->date->format('H:i')}}</li>
-            <li class="list-group-item">Location: {{$event->room}}</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
+        @endforeach
+    </div>
+</div>
 @endsection
 {{-- <div class="card col-md-6 mt-5 mb-5" style='height: auto;'>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="100000" style='height: auto;'>

@@ -36,7 +36,7 @@ class ClubsEventsController extends Controller
         $city = $request->input('city');
         $time = $request->input('time');
         $date = $request->input('date');
-        $club_name = $request->input('club_name');
+        $club_id = $request->input('club_id');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
@@ -44,7 +44,7 @@ class ClubsEventsController extends Controller
             'room' => 'required',
             'city' => 'required',
             'address' => 'required',
-            'club_name' => 'required',
+            'club_id' => 'required',
             'date' => 'required',
             'time' => 'required'
         ]);
@@ -55,11 +55,8 @@ class ClubsEventsController extends Controller
         }
         else{
             //If Validator Passes
-            //Find the club Id using the Club Name
+            $dateTime = date('Y-m-d H:i:s', strtotime("$date $time"));
 
-            $dateTime = date('m/d/Y H:i:s', strtotime("$date $time"));
-            $club_id = Club::where('club_name',$club_name)->first()->id;
-            
             $data=array('event_name'=>$eventName,
                 "description"=>$description,
                 "room"=>$room,
@@ -94,8 +91,7 @@ class ClubsEventsController extends Controller
     //Delete an Event
     public function deleteEvent($id){
         Event::where('id', $id)->delete();
-        $events = Event::all();
-        return view('edit_events', compact('events'));
+        return redirect('/display_events');
     }
 
 

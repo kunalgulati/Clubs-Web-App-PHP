@@ -27,11 +27,11 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('text', 'Date') }}
-                    {{ Form::text('textarea', Input::old('date'), array('name'=>'description', 'class' => "form-control", 'rows'=>'5' ,'id' => 'event_description',  'placeholder' => 'Description')) }}    
+                    {{ Form::date('date', Input::old('date'), array('name'=>'date', 'class' => "form-control", 'rows'=>'5' ,'id' => 'event_date', 'placeholder'=> \Carbon\Carbon::now())) }}    
                 </div>
                 <div class="form-group">
                     {{ Form::label('text', 'Time') }}
-                    {{ Form::text('textarea', Input::old('time'), array('name'=>'description', 'class' => "form-control", 'rows'=>'5' ,'id' => 'event_description',  'placeholder' => 'Description')) }}    
+                    {{ Form::time('time', Input::old('time'), array('name'=>'time', 'class' => "form-control", 'rows'=>'5' ,'id' => 'event_time')) }}    
                 </div>
                 <div class="form-group">
                     {{ Form::label('text', 'Address') }}
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('text', 'Club Name') }}
-                    {{ Form::text('textarea', Input::old('textarea'), array('name'=>'club_name', 'class' => "form-control" ,'id' => 'club_name',  'placeholder' => 'SFU Icehockey Club')) }}    
+                    {{ Form::select('club_id', Auth::user()->getClubs(), Input::old('club_id'), array('name'=>'club_id', 'class' => "form-control" ,'id' => 'club_id'))}}
                 </div>
                 <input type="submit" class="btn btn-primary">
             </form>
