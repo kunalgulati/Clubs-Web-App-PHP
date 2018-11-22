@@ -43,11 +43,9 @@
                                 </div>
                                 {{ Form::text('textareas', Input::old('text'), array('name'=>'admin', 'id' => 'admin', 'class' => "form-control", 'placeholder' => 'Martin Jackson')) }}
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    {{ Form::label('text', 'Club Name', array( 'class'=>'input-group-text', 'for' => 'inputGroupSelect01'  )) }}
-                                </div>
-                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'club_name', 'class' => "form-control" ,'id' => 'club_name',  'placeholder' => 'SFU Ice Hockey Club')) }}    
+                            <div class="form-group">
+                                {{ Form::label('text', 'Club Name') }}
+                                {{ Form::select('club_id', Auth::user()->getClubs(), Input::old('club_id'), array('name'=>'club_id', 'class' => "form-control" ,'id' => 'club_id'))}}
                             </div>
                             <input type="submit" class="btn btn-primary">
                         </form>

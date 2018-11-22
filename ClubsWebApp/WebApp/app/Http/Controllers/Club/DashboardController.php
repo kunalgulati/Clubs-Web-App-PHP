@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Dashboard_post;
+Use App\Club;
+
 
 
 class DashboardController extends Controller
@@ -35,7 +37,7 @@ class DashboardController extends Controller
         $title = $request->input('title');
         $type = $request->input('type');
         $url = $request->input('url');
-        $club_name = $request->input('club_name');
+        $club_id = $request->input('club_id');
         $admin = $request->input('admin');
 
         //Check if the given link is of correct type
@@ -56,9 +58,9 @@ class DashboardController extends Controller
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'club_id'=>'required',
             'type' => 'required',
             'url' => 'required',
-            'club_name' => 'required',
             'admin' => 'required'
         ]);
         if ($validator->fails()) {
@@ -69,13 +71,12 @@ class DashboardController extends Controller
         else{
             //If Validator Passes
             //Find the club Id using the Club Name
-            $club_id = DB::table('clubs')->where('club_name', $club_name)->pluck('id');
             
             $data=array('title'=>$title,
                 "type"=>$type,
                 "url"=>$url,
                 'club_admin_id'=>1,
-                'club_id'=>$club_id[0]
+                'club_id'=>$club_id
             );
             if(DB::table('dashboard_posts')->insert($data)){
                 return Redirect::to('/display_dashboard');
