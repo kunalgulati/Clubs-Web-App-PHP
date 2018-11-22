@@ -34,7 +34,12 @@ Route::get('login', function () {
     return view('login');
 });
 
-// Register_Club
+/*
+ * Club Routes:
+ *      - Display
+ *      - Registration
+ */
+Route::get('clubs', 'Club\RegistrationController@showClubs');
 Route::get('register_club', array('uses' => 'Club\RegistrationController@showRegistration'));
 Route::post('register_club', array('uses' => 'Club\RegistrationController@doRegistration'));
 

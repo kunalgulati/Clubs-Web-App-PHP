@@ -17,6 +17,11 @@ class RegistrationController extends Controller
         $this->middleware('auth');
     }
     
+    public function showClubs(){
+        $clubs = Club::all();
+        return View('clubs.display_clubs', compact('clubs'));
+    }
+
     public function showRegistration()
     {
         // show the form

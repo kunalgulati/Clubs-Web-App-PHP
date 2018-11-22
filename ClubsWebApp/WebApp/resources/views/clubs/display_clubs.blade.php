@@ -1,5 +1,14 @@
 @extends('main_layout')
 
+
+@section('header')
+    @include('partials.header', ['header' => 'List of Registered Clubs'])
+@endsection
+
+@section('new')
+    @include('partials.new', ['href'=>'register_club', 'text' => 'Register a new club'])
+@endsection
+
 @section('content')
 <div class = "table_display">
 <table class="table">
@@ -17,7 +26,7 @@
         <tr>
             <th scope="row">{{$club['id']}}</th>
             <td>{{$club['club_name']}}</td>
-            <td>{{$club['president_id']}}</td>
+            <td>{{$club['founder_id']}}</td>
             <td>{{$club['information']}}</td>
             <td>
             <form method= "post" action="/clubpage/{{$club->id}}">
