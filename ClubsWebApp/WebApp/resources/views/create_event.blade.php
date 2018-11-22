@@ -26,6 +26,14 @@
                     {{ Form::text('textarea', Input::old('textarea'), array('name'=>'room', 'class' => "form-control" ,'id' => 'room',  'placeholder' => 'Room 2204, West Mall Center')) }}    
                 </div>
                 <div class="form-group">
+                    {{ Form::label('text', 'Date') }}
+                    {{ Form::text('textarea', Input::old('date'), array('name'=>'description', 'class' => "form-control", 'rows'=>'5' ,'id' => 'event_description',  'placeholder' => 'Description')) }}    
+                </div>
+                <div class="form-group">
+                    {{ Form::label('text', 'Time') }}
+                    {{ Form::text('textarea', Input::old('time'), array('name'=>'description', 'class' => "form-control", 'rows'=>'5' ,'id' => 'event_description',  'placeholder' => 'Description')) }}    
+                </div>
+                <div class="form-group">
                     {{ Form::label('text', 'Address') }}
                     {{ Form::text('textarea', Input::old('textarea'), array('name'=>'address', 'class' => "form-control" ,'id' => 'address',  'placeholder' => '8888 University drive')) }}    
                 </div>

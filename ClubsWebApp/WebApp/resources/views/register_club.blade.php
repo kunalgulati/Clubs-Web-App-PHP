@@ -4,17 +4,13 @@
     @include('partials.header', ['header'=>'Register a new club'])
 @endsection
 
-
-@section('errors')
-    @if($errors->any())
-        @include('errors.errors', $errors)
-    @endif
-@endsection
-
 @section('content')
     <div id="container" class="container">
+        @if($errors->any())
+            @include('errors.errors', ['title' => 'Couldn\'t Create Club!', 'errors'=>$errors])
+        @endif
         <div class="row">
-            <form class="col-10 offset-1 text-center" action="" method="post" role="form">
+            {!!Form::open(['url' => 'register_club', 'class'=>"col-10 offset-1 text-center"])!!}
                 <div class="form-group">
                     <!-- <label for="exampleInputEmail1">Email address</label> -->
                     {{ Form::label('text', 'Club Name') }}
@@ -26,7 +22,7 @@
                     {{ Form::text('textarea', Input::old('textarea'), array('name'=>'information', 'class' => "form-control", 'rows'=>'5' ,'id' => 'clubDescription',  'placeholder' => 'Description')) }}    
                 </div>
                 <input type="submit" class="btn btn-primary">
-            </form>
+            {!!Form::close()!!}
         </div>
     </div>
 </section>

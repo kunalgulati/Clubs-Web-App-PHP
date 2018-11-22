@@ -19,7 +19,7 @@
             <p class="card-text">{{$event->description}}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Club: {{Club::find($event->club_id)->pluck('name')->first()}}
+            <li class="list-group-item">Club: {{$event->getClubName()}}
             <li class="list-group-item">Date: {{$event->date->format('m/d/Y')}}</li>
             <li class="list-group-item">Time: {{$event->date->format('H:i')}}</li>
             <li class="list-group-item">Location: {{$event->room}}</li>

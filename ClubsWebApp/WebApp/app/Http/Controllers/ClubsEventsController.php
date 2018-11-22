@@ -34,6 +34,8 @@ class ClubsEventsController extends Controller
         $room = $request->input('room');
         $address = $request->input('address');
         $city = $request->input('city');
+        $time = $request->input('time');
+        $date = $request->input('date');
         $club_name = $request->input('club_name');
         
         // run the validation rules on the inputs from the form
@@ -43,6 +45,8 @@ class ClubsEventsController extends Controller
             'city' => 'required',
             'address' => 'required',
             'club_name' => 'required',
+            'date' => 'required',
+            'time' => 'required'
         ]);
         if ($validator->fails()) {
             return Redirect::to('register_event')
@@ -52,6 +56,8 @@ class ClubsEventsController extends Controller
         else{
             //If Validator Passes
             //Find the club Id using the Club Name
+
+            $dateTime = date('m/d/Y H:i:s', strtotime("$date $time"));
             $club_id = Club::where('club_name',$club_name)->first()->id;
             
             $data=array('event_name'=>$eventName,
@@ -59,7 +65,8 @@ class ClubsEventsController extends Controller
                 "room"=>$room,
                 "address"=>$address,
                 "city"=>$city,
-                'club_id'=>$club_id
+                'club_id'=>$club_id,
+                'date' => $dateTime
             );
             if(Event::create($data)){
                 return Redirect::to('/display_events');
