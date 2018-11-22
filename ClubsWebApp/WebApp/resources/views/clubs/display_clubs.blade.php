@@ -30,10 +30,7 @@
             <td>{{$club->founder()->uname}}</td>
             <td>{{$club['information']}}</td>
             <td>
-            <form method= "post" action="#">
-            <input type="hidden" name="_token" value="{{ csrf_token()}}">
-            <input type = "submit" value = "See details">
-            </form>
+                <button class="btn btn-outline-info">Details</button>
             <td>
         </tr>
         @endforeach

@@ -37,7 +37,7 @@
 						</div>
 					</li>
 				</ul>
-				<form class="form-inline ">
+				<form class="form-inline" method="GET" action="/clubs">
 					<span class="oi oi-magnifying-glass-lg my-2 my-sm-0"></span>
 					<input class="form-control" type="search" name="search" placeholder="Find a club..." aria-label="Search">
 					<button class="btn btn-outline-secondary my-2 my-sm-0" href="/clubs" type="submit">Search</button>

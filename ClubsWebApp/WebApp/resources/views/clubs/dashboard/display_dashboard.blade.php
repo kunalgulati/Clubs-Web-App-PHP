@@ -1,5 +1,14 @@
 @extends('main_layout')
 
+@section('new')
+    @include('partials.new', ['href'=>'/register_post', 'text'=>'Post New Dasborad Post'])
+@endsection
+
+@section('header')
+    @include('partials.header', ['header'=>'Post of Your Clubs'])
+@endsection
+
+
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,72 +28,43 @@
     @endforeach
     });
 </script>
-    <div class="container">
-
-      <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-
-          <h1 class="my-4">Page Heading
-            <small>Secondary Text</small>
-          </h1>
-          @foreach($posts as $post)
-            <div class="card mb-4">
-              @if($post['type'] =='y')
-                
-              <div class="embed-responsive embed-responsive-16by9">
-                {{$temp=preg_replace("/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-		                      "//www.youtube.com/embed/$2",
-                          $post['url'])}}
-                    <iframe  src="{!! $temp !!}" allow="encrypted-media" allowfullscreen></iframe>
-                </div>
-                @else
-                  <img class="img-fluid" alt="Responsive image" src="{{$post['url']}}">
-                </div>
-              @endif
-              <div class="card-body">
-                <h2 class="card-title">{{$post['title']}}</h2>
-
-              </div>
-
-              </div>
+<div class="container">
+  <div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
+      @foreach($posts as $post)
+        <div class="card mb-4">
+          @if($post['type'] =='y')
+            <div class="embed-responsive embed-responsive-16by9">
+              {{$temp=preg_replace("/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                        "//www.youtube.com/embed/$2", $post['url'])}}
+              <iframe  src="{!! $temp !!}" allow="encrypted-media" allowfullscreen></iframe>
             </div>
-          @endforeach
-          </div>
-
-          @foreach($club_posters as $poster)
-            <div class="card mb-4">
-              
-          
-
-                    
-                    <canvas  id="{{$poster['id']}}" height="400px" ></canvas>
-                    
-                  
-          
-
-            
-              <div class="card-body">
-                <h2 class="card-title">{{$poster['title']}}</h2>
-                <p class="card-text">{{$poster['description']}}</p>
-                <form>
-                <input type= 'hidden' name = "json" id="{{$poster['id']}}i" value="{{$poster['json']}}"/>
-                <input type= 'hidden' name = "description" value="{{$poster['description']}}"/>
-                <input type= 'hidden' name = "title" value="{{$poster['title']}}"/>
-              
-                </form>
-              </div>
-              
-            </div>
-          @endforeach
-            </div>
-        
-
-       
-      <!-- /.row -->
-
+          @else
+            <img class="img-fluid" alt="Responsive image" src="{{$post['url']}}">
+        </div>
+      @endif
+      <div class="card-body">
+        <h2 class="card-title">{{$post['title']}}</h2>
+      </div>
+      @endforeach
     </div>
+  </div>
+</div>
+@foreach($club_posters as $poster)
+  <div class="card mb-4">
+    <canvas  id="{{$poster['id']}}" height="400px" ></canvas>
+    <div class="card-body">
+      <h2 class="card-title">{{$poster['title']}}</h2>
+      <p class="card-text">{{$poster['description']}}</p>
+      <form>
+        <input type= 'hidden' name = "json" id="{{$poster['id']}}i" value="{{$poster['json']}}"/>
+        <input type= 'hidden' name = "description" value="{{$poster['description']}}"/>
+        <input type= 'hidden' name = "title" value="{{$poster['title']}}"/>
+      </form>
+    </div>
+  </div>
+@endforeach
 
 <style>
 html,body {
