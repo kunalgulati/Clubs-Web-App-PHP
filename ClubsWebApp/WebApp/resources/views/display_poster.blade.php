@@ -27,26 +27,26 @@
     </thead>
     <tbody>
             <tr>
-                <th scope="row">{{$club_poster['id']}}</th>
-                <td>{{$club_poster['title']}}</td>
-                <td>{{$club_poster['description']}}</td>
-                <td id = 'json'>{{$club_poster['json']}}</td>
-                <td>{{$club_poster['club_id']}}</td>
+                <th scope="row"></th>
+                <td>{{$title}}</td>
+                <td>{{$description}}</td>
+                <td id = 'json'>{{$json}}</td>
+                <td></td>
             </tr>
             
 
     </tbody>
     </table>    
-    Title:{{$club_poster['title']}}
+    Title:{{$title}}
     <canvas  id="scanvas" width="1000px" height="1000px"></canvas>    
-    Description: {{$club_poster['description']}}
+    Description: {{$description}}
 
     
 
     <script>
      $(document).ready(function() {
     var canvas = new fabric.StaticCanvas('scanvas');
-     var json = '<?php echo $club_poster['json']; ?>';
+     var json = {{$json}};
    
     canvas.loadFromJSON(json, canvas.renderAll.bind(canvas), function(o, object) {
     fabric.log(o, object);

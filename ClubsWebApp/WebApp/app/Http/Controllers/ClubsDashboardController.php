@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Dashboard_post;
+use App\Club_poster;
 
 
 class ClubsDashboardController extends Controller
@@ -15,7 +16,8 @@ class ClubsDashboardController extends Controller
     public function showDashboard()
     {
         $posts = Dashboard_post::all();
-        return view('display_dashboard',compact('posts'));
+        $club_posters = Club_poster::all();
+        return view('display_dashboard',compact('posts','club_posters'));
     }
 
     //SHOW Registeration Form

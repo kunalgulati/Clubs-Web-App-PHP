@@ -12,10 +12,13 @@ Use \DB;
 
 class Club_posterController extends Controller
 {
-    public function loadPoster(){
-        $club_poster = Club_poster::find(1);
+    public function loadPoster(Request $request){
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $json = $request->input('json');
+        
 
-        return view('display_poster',compact('club_poster'));
+        return view('display_poster',compact('title','description','json'));
     }
     public function savePoster(Request $request)
     {

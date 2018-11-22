@@ -1,6 +1,25 @@
 @extends('main_layout')
 
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/ClubsWebApp/WebApp/resources/js/blackboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+    @foreach($club_posters as $poster)
+    var canvas = new fabric.StaticCanvas("{{$poster['id']}}");
+    var json = document.getElementById("{{$poster['id']}}i").value;
+    canvas.loadFromJSON(json, canvas.renderAll.bind(canvas), function(o, object) {
+    fabric.log(o, object);
+    });
+    @endforeach
+    });
+</script>
     <div class="container">
 
       <div class="row">
@@ -15,7 +34,7 @@
             <div class="card mb-4">
               @if($post['type'] =='y')
                 
-                <div class="embed-responsive embed-responsive-16by9">
+              <div class="embed-responsive embed-responsive-16by9">
                 {{$temp=preg_replace("/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
 		                      "//www.youtube.com/embed/$2",
                           $post['url'])}}
@@ -23,89 +42,55 @@
                 </div>
                 @else
                   <img class="img-fluid" alt="Responsive image" src="{{$post['url']}}">
+                </div>
               @endif
               <div class="card-body">
                 <h2 class="card-title">{{$post['title']}}</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                <a href="#" class="btn btn-success" style='color: white;'>Read More &rarr;</a>
+
               </div>
-              <div class="card-footer text-muted">
-                Posted on January 1, 2017 by
-                <b style='color:black;'>userX</b>
+
               </div>
             </div>
           @endforeach
-            </div>
+          </div>
 
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
+          @foreach($club_posters as $poster)
+            <div class="card mb-4">
+              
+          
 
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
+                    
+                    <canvas  id="{{$poster['id']}}" height="400px" ></canvas>
+                    
+                  
+          
+
+            
+              <div class="card-body">
+                <h2 class="card-title">{{$poster['title']}}</h2>
+                <p class="card-text">{{$poster['description']}}</p>
+                <form>
+                <input type= 'hidden' name = "json" id="{{$poster['id']}}i" value="{{$poster['json']}}"/>
+                <input type= 'hidden' name = "description" value="{{$poster['description']}}"/>
+                <input type= 'hidden' name = "title" value="{{$poster['title']}}"/>
+              
+                </form>
               </div>
+              
             </div>
-          </div>
-
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          @endforeach
             </div>
-          </div>
+        
 
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div>
-
-        </div>
-
-      </div>
+       
       <!-- /.row -->
 
     </div>
-@endsection
-
 
 <style>
+html,body {
+    height:100%;
+}
 
 .btn .btn-info{
     color: white;
@@ -135,3 +120,6 @@
     max-height: 400px;
 }
 </style>
+
+
+@endsection

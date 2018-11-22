@@ -15,7 +15,7 @@ Route::get('/blackboard', function () {
 });
 
 Route::post('/saveJSON', 'Club_posterController@savePoster');
-Route::get('/display_blackboard', 'Club_posterController@loadPoster');
+Route::post('/display_blackboard', 'Club_posterController@loadPoster');
 
 
 

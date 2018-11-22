@@ -7,7 +7,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/ClubsWebApp/WebApp/resources/js/blackboard.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
 <script src="{{ URL::asset("js/blackboard.js") }}"></script>
 <link rel="stylesheet" href="{{ URL::asset("css/blackboard.css") }}">
@@ -50,7 +49,24 @@
 			<div class="form-group">
 				<div id="images"
 					style="width: 218px; height: 100px; overflow-y: scroll;">
-					<img draggable="true">
+					<img draggable="true"
+						src="{{ URL::asset('image/1001.png') }}" width="84"
+						height="84"> 
+					<img draggable="true"
+						src="{{ URL::asset('image/1002.png') }}" width="84"
+						height="84"></img> 
+					<img draggable="true"
+						src="{{ URL::asset('image/1003.png') }}" width="84"
+						height="84"></img> 
+					<img draggable="true"
+						src="{{ URL::asset('image/1004.png') }}" width="84"
+						height="84"></img> 
+				    <img draggable="true"
+						src="{{ URL::asset('image/1005.png') }}" width="84"
+						height="84"></img> 
+				    <img draggable="true"
+						src="{{ URL::asset('image/1006.png') }}" width="84"
+						height="84"></img>
 
 				</div>
 			</div>
@@ -318,7 +334,7 @@
 		</div>
 		<div>
 		<form id="saveJSON" method="POST" style = "margin-left:30px">
-            <input type="hidden" name="_token" value="{{ csrf_token()}}">
+		<input type="hidden" name="_token" value="{{ csrf_token()}}">
 			<input type='hidden' id='hiddenField' name='title'/> 
             <input type='hidden' id='hiddenField2' name='json'/>
             <input type='hidden' id='hiddenField3' name='description'/>
