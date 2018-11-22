@@ -29,12 +29,12 @@ class ClubsExpensesController extends Controller
         $expense_name = $request->input('expense_name');
         $description = $request->input('description');
         $amount = $request->input('amount');
-        $club_name = $request->input('club_name');
+        $club_id = $request->input('club_id');
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->all(), [
             'expense_name'=> 'required',
-            'club_name' => 'required',
+            'club_id' => 'required',
             'amount' => 'required|numeric',
         ]);
         if ($validator->fails()) {
@@ -44,9 +44,7 @@ class ClubsExpensesController extends Controller
         }
         else{
             //If Validator Passes
-            //Find the club Id using the Club Name
-            $club_id = Club::where('club_name',$club_name)->first()->id;
-            
+            //Find the club Id using the Club Name            
             $data=array('expense_name'=>$expense_name,
                 "description"=>$description,
                 "amount"=>$amount,

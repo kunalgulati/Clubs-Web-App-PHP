@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 {{ Form::label('text', 'Club Name') }}
-                                {{ Form::text('textarea', Input::old('textarea'), array('name'=>'club_name', 'class' => "form-control" ,'id' => 'club_name',  'placeholder' => 'SFU Ice Hockey Club')) }}    
+                                {{ Form::select('club_id', Auth::user()->getClubs(), Input::old('club_id'), array('name'=>'club_id', 'class' => "form-control" ,'id' => 'club_id'))}}
                             </div>
                             <input type="submit" class="btn btn-primary">
                         </form>
