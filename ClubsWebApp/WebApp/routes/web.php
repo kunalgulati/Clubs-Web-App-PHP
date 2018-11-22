@@ -37,6 +37,7 @@ Route::get('login', function () {
 /*
  * Club Routes:
  *      - Display
+ *      - Search
  *      - Registration
  */
 Route::get('clubs', 'Club\RegistrationController@showClubs');

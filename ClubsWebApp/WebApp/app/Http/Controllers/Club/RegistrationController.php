@@ -17,8 +17,12 @@ class RegistrationController extends Controller
         $this->middleware('auth');
     }
     
-    public function showClubs(){
+    public function showClubs(Request $request){
         $clubs = Club::all();
+        if($request->has('search')){
+            $clubNames = $clubs->pluck('club_name','id');
+            $clubs = self::filter($clubNames, $request['search']);
+        }
         return View('clubs.display_clubs', compact('clubs'));
     }
 
@@ -57,5 +61,19 @@ class RegistrationController extends Controller
                      ->withInput(); // send back the input (not the password) so that we can repopulate the form
             }    
         }
+    }
+
+    private static function filter($clubs, $filter){
+        $result = array();
+        $filter = strtolower($filter);
+        foreach ($clubs as $id => $name) {
+            $name = strtolower($name);
+            $strpos = strpos($name,$filter);
+            if($strpos !== false){
+                $club = Club::find($id);
+                array_push($result, $club);
+            }
+        }
+        return $result;
     }
 }

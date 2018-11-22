@@ -38,8 +38,8 @@
 				</ul>
 				<form class="form-inline ">
 					<span class="oi oi-magnifying-glass-lg my-2 my-sm-0"></span>
-					<input class="form-control" type="search" placeholder="Find a club..." aria-label="Search">
-					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+					<input class="form-control" type="search" name="search" placeholder="Find a club..." aria-label="Search">
+					<button class="btn btn-outline-secondary my-2 my-sm-0" href="/clubs" type="submit">Search</button>
 				</form>
 				
 				@if (!Auth::guest()) <!--logged in-->
