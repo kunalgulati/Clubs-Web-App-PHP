@@ -1,21 +1,21 @@
 @extends('main_layout')
 
+@section('header')
+    @include('partials.header',['header'=>'Post something to your club'])
+@endsection
+
+
+
 @section('content')
-<head>
-	<link rel="stylesheet" href="{{ URL::asset("css/form.css") }}">
-</head>
 {{ Form::open(array('url' => 'register_post')) }}
 <section id="cover">
     <div id="cover-caption">
         <div id="container" class="container">
             <div class="row">
                 <div class="col-sm-10 offset-sm-1 text-center">
-                    <h1 class="display-4">Register your Club Dashboard POST</h1>
-                    <p>
-                        @if ($errors->any())
-                            {{ implode('', $errors->all('<div>:message</div>')) }}
-                        @endif
-                    </p>
+                    @if($errors->any())
+                        @include('errors.errors',['title'=>'Failed to post!', 'errors'=>$errors])
+                    @endif
                     <div class="info-form">
                         <form class='col-6' action="" method="post" role="form">
                         <div class="input-group mb-3">
